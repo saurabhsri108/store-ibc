@@ -1,0 +1,58 @@
+:root {
+  /* Colors */
+
+  --c-b10-black: hsla(0, 0%, 0%, 1); /* Background Color - Primary */
+  --c-w10-white: hsla(0, 0%, 100%, 1); /* Background Color - Body */
+  --c-b7-black: hsla(0, 0%, 0%, 0.7); /* Heading Color Black */
+  --c-w7-white: hsla(0, 0%, 100%, 0.7); /* Heading Color White */
+  --c-b6-black-alpha: hsla(0, 0%, 0%, 0.6); /* Paragraph Color Black */
+  --c-w6-white-alpha: hsla(0, 0%, 100%, 0.6); /* Paragraph Color White */
+  /* Navigation Item color Black */
+  --c-b-nav-link-item: var(--c-b6-black-alpha);
+  /* Navigation Item active color Black */
+  --c-b-nav-link-item-active: var(--c-b10-black);
+  /* Navigation Item color White */
+  --c-w-nav-link-item: var(--c-w6-white-alpha);
+  /* Navigation Item active color White */
+  --c-w-nav-link-item-active: var(--c-w10-white);
+  --c-l-separator: hsla(0, 0%, 100%, 0.2);
+
+  /* Fonts */
+
+  --fs-cta-heading: 2.4rem;
+  --fs-cta-subheading: 1.2rem;
+  --fs-nav-link-item: 1.4rem;
+  --fs-brand: 1.6rem;
+  --fs-searchbar: 1.3rem;
+  --fs-breadcrumbs: 1.8rem;
+  --fs-login: 1.8rem;
+  --fs-cta-button: 1rem;
+}
+
+@media (min-width: 21rem) {
+  :root {
+    --fs-cta-heading: 2.8rem;
+    --fs-cta-subheading: 1.4rem;
+    --fs-cta-button: 1.4rem;
+  }
+}
+
+@media (min-width: 25rem) {
+  :root {
+    --fs-cta-heading: 3.2rem;
+    --fs-cta-subheading: 1.6rem;
+    --fs-cta-button: 1.2rem;
+  }
+}
+
+@media (min-width: 92rem) {
+  :root {
+    /* Fonts */
+    --fs-cta-heading: 7.2rem;
+    --fs-cta-subheading: 2.4rem;
+    --fs-nav-link-item: 1.8rem;
+    --fs-brand: 3.6rem;
+    --fs-searchbar: 1.4rem;
+    --fs-breadcrumbs: 1.8rem;
+  }
+}
