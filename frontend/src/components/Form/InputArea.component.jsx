@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledTextArea = styled.textarea`
   font-size: var(--fs-searchbar);
-  width: 235px;
+  width: 100%;
   border: none;
   outline: none;
   padding: 1rem;
