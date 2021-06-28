@@ -19,3 +19,31 @@ The project is purely for learning purpose & future job application.
 ## Figma Design File
 
 For Viewing [GO HERE](https://www.figma.com/file/bAO3dmZDJM2UcJUz7ezltb/E-Commerce-Store-Project?node-id=64%3A0)
+
+## Components Structure
+
+- src/
+  - auth/
+  - components/
+    - Header/
+      - Header.component.jsx
+      - Header.styles.jsx
+      - MobileOverlay.component.jsx
+    - Footer/
+      - Footer.component.jsx
+      - Footer.styles.jsx
+    - HomeSection
+      - images/
+      - HomeSection.component.jsx
+      - HomeSection.styles.jsx
+  - pages/
+    - Home.jsx
+  - fonts/
+  - redux/
+  - theme/
+    App.jsx
+    App.styles.jsx
+    App.test.js
+    index.jsx
+    reportWebVitals.js
+    setupTests.js

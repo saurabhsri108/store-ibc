@@ -1,4 +1,3 @@
-import React from "react"
 import {
   SectionHome,
   Container,
@@ -7,7 +6,7 @@ import {
   CtaPara,
   CtaButton,
   HomeImage,
-} from "./HomeSectionStyle"
+} from "./HomeSection.styles";
 
 const HomeSection = () => {
   return (
@@ -16,7 +15,7 @@ const HomeSection = () => {
         <HomeImage />
         <InnerSection>
           <CtaHeading>
-            We don’t sell products, we deliver aspirations.
+            We don’t sell products, we deliver <span>aspirations</span>.
           </CtaHeading>
           <CtaPara>
             Get your most desired aspiration delivered to your home. Fast,
@@ -26,7 +25,7 @@ const HomeSection = () => {
         </InnerSection>
       </Container>
     </SectionHome>
-  )
-}
+  );
+};
 
-export default HomeSection
+export default HomeSection;

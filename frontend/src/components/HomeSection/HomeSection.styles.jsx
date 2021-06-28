@@ -1,9 +1,9 @@
-import styled from "styled-components"
-import HomeSVG from "../images/m_home.svg"
+import styled from "styled-components";
+import HomeSVG from "./images/m_home.svg";
 
 export const SectionHome = styled.section`
-  background-color: var(--c-w10-white);
-`
+  background-color: var(--color-white-100);
+`;
 
 export const Container = styled.section`
   display: grid;
@@ -13,40 +13,57 @@ export const Container = styled.section`
   margin: auto;
   padding: 2rem 0;
   gap: 2rem;
-`
+
+  @media screen and (min-width: 33rem) {
+    place-items: normal;
+  }
+`;
 export const InnerSection = styled.section`
   display: grid;
   place-content: center;
   place-items: center;
   gap: 2rem;
-`
+
+  @media screen and (min-width: 33rem) {
+    margin-top: -8rem;
+  }
+`;
 
 export const HomeImage = styled.img`
   width: 100%;
   height: auto;
-`
+
+  @media screen and (min-width: 33rem) {
+    height: 70%;
+  }
+`;
 
 export const CtaHeading = styled.h1`
   text-align: center;
   font-size: var(--fs-cta-heading);
-  color: var(--c-b7-black);
+  color: var(--color-black-70);
   font-weight: 600;
-`
+  margin: 0;
+
+  & span {
+    color: var(--color-black-100);
+  }
+`;
 
 export const CtaPara = styled.p`
   text-align: center;
   font-size: var(--fs-cta-subheading);
-  color: var(--c-b6-black-alpha);
+  color: var(--color-black-60);
   letter-spacing: 0.1rem;
   line-height: 1.5;
   margin-top: -1.2rem;
-`
+`;
 
 export const CtaButton = styled.button`
   border: none;
   outline: none;
-  background: var(--c-b10-black);
-  color: var(--c-w10-white);
+  background: var(--color-black-100);
+  color: var(--color-white-100);
   font-size: var(--fs-cta-button);
   text-transform: uppercase;
   font-weight: 700;
@@ -54,14 +71,15 @@ export const CtaButton = styled.button`
   padding: 1.6rem 3.6rem;
   border-radius: 4rem;
   margin-top: 0.325rem;
+  font-family: "Raleway", sans-serif;
 
   @media (min-width: 21rem) {
     padding: 2rem 4rem;
     margin-top: 1rem;
   }
-`
+`;
 
 HomeImage.defaultProps = {
   src: HomeSVG,
   alt: "Shopping Store Home",
-}
+};
