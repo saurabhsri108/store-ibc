@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import HomeSVG from "./images/m_home.svg";
+import Container from "../Container/Container.component";
 
 export const SectionHome = styled.section`
   background-color: var(--color-white-100);
 `;
 
-export const Container = styled.section`
-  display: grid;
+export const HeaderContainer = styled(Container)`
   place-content: center;
   place-items: center;
-  width: 80%;
-  margin: auto;
-  padding: 2rem 0;
-  gap: 2rem;
 
   @media screen and (min-width: 33rem) {
     place-items: normal;

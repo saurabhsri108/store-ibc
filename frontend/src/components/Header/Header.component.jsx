@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaBars, FaUserCircle, FaShoppingCart, FaSearch } from "react-icons/fa";
 import {
   MainHeader,
-  Container,
+  HeaderContainer,
   FirstHeaderSection,
   LogoSection,
   Hamburger,
@@ -34,7 +34,7 @@ const Header = (props) => {
         isOverlayOpen={isOverlayOpen}
         overlayHandler={overlayHandler}
       />
-      <Container>
+      <HeaderContainer>
         <FirstHeaderSection>
           <LogoSection>
             <Hamburger
@@ -102,7 +102,7 @@ const Header = (props) => {
             </label>
           </MobileSearchForm>
         </MobileSearchSection>
-      </Container>
+      </HeaderContainer>
     </MainHeader>
   );
 };

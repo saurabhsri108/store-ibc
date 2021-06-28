@@ -1,6 +1,6 @@
 import {
   SectionHome,
-  Container,
+  HeaderContainer,
   InnerSection,
   CtaHeading,
   CtaPara,
@@ -11,7 +11,7 @@ import {
 const HomeSection = () => {
   return (
     <SectionHome>
-      <Container>
+      <HeaderContainer>
         <HomeImage />
         <InnerSection>
           <CtaHeading>
@@ -23,7 +23,7 @@ const HomeSection = () => {
           </CtaPara>
           <CtaButton>Browse Products</CtaButton>
         </InnerSection>
-      </Container>
+      </HeaderContainer>
     </SectionHome>
   );
 };

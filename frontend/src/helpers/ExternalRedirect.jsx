@@ -1,7 +1,9 @@
-import { Route } from "react-router-dom";
-
-const ExternalRedirect = ({ to, ...routeProps }) => {
-  return <Route {...routeProps} render={() => (window.location.href = to)} />;
+const ExternalRedirect = ({ to, children }) => {
+  return (
+    <a href={to} target="_blank" rel="noreferrer">
+      {children}
+    </a>
+  );
 };
 
 export default ExternalRedirect;

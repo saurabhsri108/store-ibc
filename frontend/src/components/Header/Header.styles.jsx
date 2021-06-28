@@ -4,10 +4,12 @@ import { Link as ScrollerLink } from "react-scroll";
 import { FaTimes } from "react-icons/fa";
 
 export const MainHeader = styled.header`
+  position: sticky;
+  top: 0;
   background-color: var(--color-black-100);
 `;
 
-export const Container = styled.section`
+export const HeaderContainer = styled.section`
   width: 80%;
   margin: auto;
 `;

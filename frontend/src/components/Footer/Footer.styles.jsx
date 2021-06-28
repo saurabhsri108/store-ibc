@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ExternalRedirect from "../../helpers/ExternalRedirect";
 
 export const MainFooter = styled.footer`
   background-color: var(--color-black-100);
@@ -15,7 +16,7 @@ export const Container = styled.section`
   color: var(--color-white-100);
 `;
 
-export const ExternalLink = styled.a`
+export const ExternalLink = styled(ExternalRedirect)`
   color: var(--color-white-100);
   font-weight: 700;
 `;
