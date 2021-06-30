@@ -56,3 +56,10 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "Font Awesome 5";
+  src: url("../fonts/font-awesome-5-brands-regular-400.woff2") format("woff2"),
+    url("../fonts/font-awesome-5-brands-regular-400.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}

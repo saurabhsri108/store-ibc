@@ -1,6 +1,7 @@
 import {
   SectionAbout,
   AboutContainer,
+  AboutDetails,
   AboutImage,
   AboutHeading,
   AboutParagraph,
@@ -8,16 +9,18 @@ import {
 
 const AboutSection = () => {
   return (
-    <SectionAbout>
+    <SectionAbout id="about">
       <AboutContainer>
-        <AboutHeading>Who are We?</AboutHeading>
-        <AboutParagraph>
-          We have served millions of people who aspire to better their lives.
-        </AboutParagraph>
-        <AboutParagraph className="last-para">
-          We are present in 10 countries around the globe & are constantly
-          expanding.
-        </AboutParagraph>
+        <AboutDetails>
+          <AboutHeading>Who are We?</AboutHeading>
+          <AboutParagraph>
+            We have served millions of people who aspire to better their lives.
+          </AboutParagraph>
+          <AboutParagraph className="last-para">
+            We are present in 10 countries around the globe & are constantly
+            expanding.
+          </AboutParagraph>
+        </AboutDetails>
         <AboutImage />
       </AboutContainer>
     </SectionAbout>

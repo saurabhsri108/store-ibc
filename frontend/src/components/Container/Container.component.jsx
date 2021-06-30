@@ -6,6 +6,11 @@ const StyledContainer = styled.div`
   margin: auto;
   padding: 2rem 0;
   gap: 2rem;
+  max-width: 1080px;
+
+  @media screen and (min-width: 60rem) {
+    width: 90%;
+  }
 `;
 
 const Container = ({ children, ...props }) => {

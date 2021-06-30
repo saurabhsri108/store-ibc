@@ -26,55 +26,47 @@ export const variables = css`
     /* Fonts */
 
     --fs-cta-heading: 2.4rem;
-    --fs-cta-subheading: 1.2rem;
-    --fs-user-actions: 1.2rem;
+    --fs-cta-heading-line-height: 3rem;
+    --fs-cta-subheading: 1.5rem;
+    --fs-cta-subheading-line-height: 2.6rem;
+    --fs-cta-button: 1.5rem;
+    --fs-big-nav-link-item: 1.4rem;
+    --fs-brand: 2rem;
+    --fs-user-actions: 1.4rem;
+    --fs-searchbar: 1.4rem;
+    --fs-overlay-buttons: 1.3rem;
     --fs-nav-link-item: 1.4rem;
-    --fs-brand: 1.8rem;
-    --fs-searchbar: 1.125rem;
-    --fs-breadcrumbs: 1.8rem;
-    --fs-login: 1.8rem;
-    --fs-cta-button: 1rem;
-    --fs-svg-icons: 1.6rem;
     --fs-footer: 1rem;
-    --fs-overlay-buttons: 1.2rem;
+    --fs-login: var(--fs-brand);
+    --fs-svg-icons: var(--fs-brand);
   }
 
-  @media (min-width: 25rem) {
+  @media screen and (min-width: 45rem) {
     :root {
-      --fs-brand: 2rem;
-      --fs-cta-heading: 3.2rem;
-      --fs-cta-subheading: 1.4rem;
-      --fs-cta-button: 1.4rem;
-      --fs-searchbar: 1.4rem;
-      --fs-svg-icons: 2rem;
-      --fs-footer: 1.2rem;
+      --fs-cta-heading: 4rem;
+      --fs-cta-heading-line-height: 5.7rem;
+      --fs-cta-subheading: 1.8rem;
+      --fs-cta-subheading-line-height: 2.8rem;
     }
   }
 
-  @media (min-width: 33rem) {
-    :root {
-      --fs-brand: 2.6rem;
-      --fs-login: 2.6rem;
-      --fs-nav-link-item: 1.8rem;
-      --fs-overlay-buttons: 1.6rem;
-      --fs-svg-icons: 2.6rem;
-      --fs-searchbar: 1.8rem;
-      --fs-footer: 1.4rem;
-      --fs-cta-heading: 4.2rem;
-      --fs-cta-subheading: 1.6rem;
-      --fs-cta-button: 1.8rem;
-    }
-  }
-
-  @media (min-width: 92rem) {
+  @media screen and (min-width: 60rem) {
     :root {
       /* Fonts */
-      --fs-cta-heading: 7.2rem;
+      /* --fs-svg-icons: 4rem;
+      --fs-cta-heading: 4.5rem;
       --fs-cta-subheading: 2.4rem;
       --fs-nav-link-item: 1.8rem;
       --fs-brand: 3.6rem;
-      --fs-searchbar: 1.4rem;
-      --fs-breadcrumbs: 1.8rem;
+      --fs-searchbar: 2.4rem;
+      --fs-breadcrumbs: 1.8rem; */
+    }
+  }
+
+  @media screen and (min-width: 72rem) {
+    :root {
+      /* --fs-cta-heading: 7.2rem; */
+      /* --fs-cta-subheading: 3.2rem; */
     }
   }
 `;

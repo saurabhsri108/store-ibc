@@ -1,107 +1,37 @@
 import { useState } from "react";
-import { FaBars, FaUserCircle, FaShoppingCart, FaSearch } from "react-icons/fa";
 import {
   MainHeader,
   HeaderContainer,
   FirstHeaderSection,
-  LogoSection,
-  Hamburger,
-  LogoLink,
-  BigScreenNav,
-  BigScreenForm,
-  UserActionsNav,
-  MobileSearchSection,
-  Navlist,
-  Navitem,
-  Navlink,
-  Scroller,
-  MobileSearchForm,
-  SearchField,
-  SearchIcon,
 } from "./Header.styles";
-import MobileOverlay from "./MobileOverlay.component";
+import MobileOverlay from "./MobileOverlay/MobileOverlay.component";
+import MobileSearchBar from "./MobileSearchBar/MobileSearchBar.component";
+import BigSearchBar from "./BigSearchBar/BigSearchBar.component";
+import UserActionsNavigation from "./UserActions/UserActions.component";
+import BigScreenNavigation from "./BigScreenNavigation/BigScreenNavigation.component";
+import SiteLogo from "./Logo/SiteLogo.component";
 
 const Header = (props) => {
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isOverlayOpen, toggleIsOverlayOpen] = useState(false);
 
   const overlayHandler = () => {
-    setIsOverlayOpen((prevIsOpen) => !prevIsOpen);
+    toggleIsOverlayOpen((prevIsOpen) => !prevIsOpen);
   };
 
   return (
-    <MainHeader>
+    <MainHeader id="home">
       <MobileOverlay
         isOverlayOpen={isOverlayOpen}
         overlayHandler={overlayHandler}
       />
       <HeaderContainer>
         <FirstHeaderSection>
-          <LogoSection>
-            <Hamburger
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              aria-controls="collapsableNav"
-              onClick={overlayHandler}
-            >
-              <FaBars />
-            </Hamburger>
-            <LogoLink to="/">storeJS</LogoLink>
-          </LogoSection>
-          <BigScreenNav>
-            <Navlist>
-              <Navitem>
-                <Scroller to="/">Home</Scroller>
-              </Navitem>
-              <Navitem>
-                <Scroller to="/">About Us</Scroller>
-              </Navitem>
-              <Navitem>
-                <Scroller to="/">Contact Us</Scroller>
-              </Navitem>
-            </Navlist>
-          </BigScreenNav>
-          <BigScreenForm>
-            <label>
-              <SearchIcon>
-                <FaSearch />
-              </SearchIcon>
-              <SearchField
-                aria-label="Search for products, brands, and more"
-                placeholder="Search for products, brands, and more"
-              />
-            </label>
-          </BigScreenForm>
-          <UserActionsNav>
-            <Navlist>
-              <Navitem>
-                <Navlink to="/">
-                  <FaShoppingCart />
-                  {/* Cart */}
-                </Navlink>
-              </Navitem>
-              <Navitem>
-                <Navlink to="/" className="ctaLink">
-                  <FaUserCircle />
-                  {/* Login */}
-                </Navlink>
-              </Navitem>
-            </Navlist>
-          </UserActionsNav>
+          <SiteLogo overlayHandler={overlayHandler} />
+          <BigScreenNavigation />
+          <BigSearchBar />
+          <UserActionsNavigation />
         </FirstHeaderSection>
-        <MobileSearchSection>
-          <MobileSearchForm>
-            <label>
-              <SearchIcon>
-                <FaSearch />
-              </SearchIcon>
-              <SearchField
-                autoFocus
-                aria-label="Search for products, brands, and more"
-                placeholder="Search for products, brands, and more"
-              />
-            </label>
-          </MobileSearchForm>
-        </MobileSearchSection>
+        <MobileSearchBar />
       </HeaderContainer>
     </MainHeader>
   );

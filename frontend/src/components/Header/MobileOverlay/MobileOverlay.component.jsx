@@ -1,15 +1,3 @@
-import { Link } from "react-router-dom";
-import {
-  Scroller,
-  Overlay,
-  OLogin,
-  ONav,
-  Octa,
-  StyledFaTimes,
-  ONavlist,
-  ONavitem,
-  OctaButton,
-} from "./Header.styles";
 import {
   FaHome,
   FaInfoCircle,
@@ -20,6 +8,19 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 
+import {
+  Overlay,
+  OLogin,
+  OLoginLink,
+  OLoginPara,
+  StyledFaTimes,
+  ONav,
+  Scroller,
+  ONavLink,
+  Octa,
+  OctaButton,
+} from "./MobileOverlay.styles";
+
 const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
   return (
     <Overlay
@@ -28,60 +29,60 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
       onClick={overlayHandler}
     >
       <OLogin>
-        <Link to="/" onClick={overlayHandler}>
+        <OLoginLink to="/" onClick={overlayHandler}>
           <FaUserCircle onClick={overlayHandler} />
-          <p onClick={overlayHandler}>Login &amp; Signup</p>
-        </Link>
+          <OLoginPara onClick={overlayHandler}>Login &amp; Signup</OLoginPara>
+        </OLoginLink>
       </OLogin>
       <StyledFaTimes />
       <ONav>
-        <ONavlist>
-          <ONavitem>
+        <ul>
+          <li>
             <Scroller to="home" onClick={overlayHandler}>
               <FaHome />
-              <p>Home</p>
+              Home
             </Scroller>
-          </ONavitem>
-          <ONavitem>
+          </li>
+          <li>
             <Scroller to="about" onClick={overlayHandler}>
               <FaInfoCircle />
-              <p>About</p>
+              About
             </Scroller>
-          </ONavitem>
-          <ONavitem>
+          </li>
+          <li>
             <Scroller to="contact" onClick={overlayHandler}>
               <FaMailBulk />
-              <p>Contact Us</p>
+              Contact Us
             </Scroller>
-          </ONavitem>
-        </ONavlist>
+          </li>
+        </ul>
       </ONav>
       <ONav>
-        <ONavlist>
-          <ONavitem>
-            <Link to="/orders">
+        <ul>
+          <li>
+            <ONavLink to="/orders">
               <FaWallet />
               My Orders
-            </Link>
-          </ONavitem>
-          <ONavitem>
-            <Link to="/">
+            </ONavLink>
+          </li>
+          <li>
+            <ONavLink to="/">
               <FaShoppingCart /> My Cart
-            </Link>
-          </ONavitem>
-          <ONavitem>
-            <Link to="/">
+            </ONavLink>
+          </li>
+          <li>
+            <ONavLink to="/">
               <FaHeart />
               My Wishlist
-            </Link>
-          </ONavitem>
-          <ONavitem>
-            <Link to="/">
+            </ONavLink>
+          </li>
+          <li>
+            <ONavLink to="/">
               <FaUserCircle />
               My Account
-            </Link>
-          </ONavitem>
-        </ONavlist>
+            </ONavLink>
+          </li>
+        </ul>
       </ONav>
       <Octa>
         <OctaButton>Browse Products</OctaButton>

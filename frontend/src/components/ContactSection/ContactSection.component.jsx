@@ -10,11 +10,10 @@ import {
   FormInputField,
   FormInputArea,
   ContactDetails,
-  ContactImage,
   DetailsBox,
-  Para,
+  ExternalLink,
+  DetailsInfo,
 } from "./ContactSection.styles";
-import ExternalRedirect from "../../helpers/ExternalRedirect";
 
 const ContactSection = () => {
   const [name, setName] = useState("");
@@ -26,12 +25,13 @@ const ContactSection = () => {
   };
 
   return (
-    <SectionContact>
+    <SectionContact id="contact">
       <ContactContainer>
-        <ContactHeading>Contact Us</ContactHeading>
-        <ContactForm onSubmit={submitContactHandler}>
-          <FormGroup>
-            <FormLabel>
+        <ContactDetails>
+          <ContactHeading>Contact Us</ContactHeading>
+          <ContactForm onSubmit={submitContactHandler}>
+            <FormGroup>
+              <FormLabel>Name</FormLabel>
               <FormInputField
                 type="text"
                 placeholder="Enter your name"
@@ -39,10 +39,9 @@ const ContactSection = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </FormLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormLabel>
+            </FormGroup>
+            <FormGroup>
+              <FormLabel>Email</FormLabel>
               <FormInputField
                 type="email"
                 placeholder="Enter your email"
@@ -50,49 +49,46 @@ const ContactSection = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </FormLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormLabel>
+            </FormGroup>
+            <FormGroup>
+              <FormLabel>Message</FormLabel>
               <FormInputArea
-                type="text"
                 placeholder="Enter your message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
-            </FormLabel>
-          </FormGroup>
-          <FormSubmitButton type="submit">Send Message</FormSubmitButton>
-        </ContactForm>
-        <ContactDetails>
-          <ContactImage />
-          <DetailsBox>
-            <Para>
-              Email:{" "}
-              <ExternalRedirect to="mailto:vasudeveloper001@gmail.com">
-                vasudeveloper001@gmail.com
-              </ExternalRedirect>
-            </Para>
-            <Para>
-              Twitter:{" "}
-              <ExternalRedirect to="https://twitter.com/saudev001">
-                @saudev001
-              </ExternalRedirect>
-            </Para>
-            <Para>
-              LinkedIn:{" "}
-              <ExternalRedirect to="https://www.linkedin.com/in/saurabh-srivastava-b62330109/">
-                saurabh-srivastava-b62330109/
-              </ExternalRedirect>
-            </Para>
-            <Para>
-              GitHub:{" "}
-              <ExternalRedirect to="https://github.com/vasudeveloper001">
-                @vasudeveloper001
-              </ExternalRedirect>
-            </Para>
-          </DetailsBox>
+            </FormGroup>
+            <FormGroup>
+              <FormSubmitButton type="submit">Send Message</FormSubmitButton>
+            </FormGroup>
+          </ContactForm>
         </ContactDetails>
+        <DetailsBox>
+          <DetailsInfo>
+            Email:
+            <ExternalLink to="mailto:vasudeveloper001@gmail.com">
+              vasudeveloper001@gmail.com
+            </ExternalLink>
+          </DetailsInfo>
+          <DetailsInfo>
+            Twitter:
+            <ExternalLink to="https://twitter.com/saudev001">
+              @saudev001
+            </ExternalLink>
+          </DetailsInfo>
+          <DetailsInfo>
+            LinkedIn:
+            <ExternalLink to="https://www.linkedin.com/in/saurabh-srivastava-b62330109/">
+              saurabh-srivastava-b62330109/
+            </ExternalLink>
+          </DetailsInfo>
+          <DetailsInfo>
+            GitHub:
+            <ExternalLink to="https://github.com/vasudeveloper001">
+              @vasudeveloper001
+            </ExternalLink>
+          </DetailsInfo>
+        </DetailsBox>
       </ContactContainer>
     </SectionContact>
   );

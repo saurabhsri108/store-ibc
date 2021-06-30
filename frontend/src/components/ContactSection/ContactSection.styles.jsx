@@ -1,80 +1,122 @@
 import styled from "styled-components";
-import ContactSVG from "./images/contact_us.svg";
-import Form from "../Form/Form.component";
-import Group from "../Form/Group.component";
-import Label from "../Form/Label.component";
-import InputField from "../Form/InputField.component";
-import InputArea from "../Form/InputArea.component";
-import Button from "../Form/Button.component";
 import Container from "../Container/Container.component";
 
 export const SectionContact = styled.section``;
 
-export const ContactContainer = styled(Container)``;
+export const ContactContainer = styled(Container)`
+  gap: 4rem;
+
+  @media screen and (min-width: 45rem) {
+    padding: 8rem 0;
+  }
+
+  @media screen and (min-width: 60rem) {
+    grid-template-columns: auto auto;
+  }
+`;
+
+export const ContactDetails = styled.div`
+  display: grid;
+  gap: 2rem;
+`;
 
 export const ContactHeading = styled.h2`
-  text-align: center;
+  text-align: left;
   font-size: var(--fs-cta-heading);
+  line-height: var(--fs-cta-heading-line-height);
   color: var(--color-black-70);
   font-weight: 600;
-`;
 
-export const ContactForm = styled(Form)`
-  background: var(--color-black-100);
-`;
-
-export const FormGroup = styled(Group)``;
-export const FormLabel = styled(Label)``;
-
-export const FormInputField = styled(InputField)``;
-
-export const FormInputArea = styled(InputArea)``;
-
-export const FormSubmitButton = styled(Button)`
-  margin-top: 1.6rem;
-  background-color: var(--color-black-100);
-  border: 1px solid var(--color-white-100);
-  color: var(--color-white-100);
-  transition: all 0.1s ease-in-out;
-
-  &:hover,
-  &:focus,
-  &:active {
-    transition: all 0.1s ease-in-out;
-    background-color: var(--color-white-100);
-    color: var(--color-color-100);
+  &::after {
+    content: "";
+    background-color: var(--color-black-100);
+    width: 2.4rem;
+    height: 0.4rem;
+    display: block;
+    margin-top: 1rem;
   }
 `;
-
-export const ContactDetails = styled.section``;
 
 export const DetailsBox = styled.section`
-  border: 2px solid black;
-  padding: 1rem;
   display: grid;
-  grid-template-columns: 1fr;
-  margin: -2rem 0 2rem 0;
-  font-size: 1.2rem;
+  color: var(--color-black-100);
+  font-size: var(--fs-searchbar);
+  line-height: var(--fs-cta-subheading-line-height);
   font-weight: 600;
-  color: var(--color-black-70);
   gap: 0.5rem;
+  border-top: 1px solid hsla(0, 0%, 0%, 0.2);
+  padding: 2rem 0;
+  margin-left: 10rem;
 
-  a {
-    font-size: 1.125rem;
-    color: var(--color-black-60);
-    text-decoration: underline;
+  @media screen and (min-width: 60rem) {
+    padding: 0;
+    gap: 0;
+    border: none;
+    align-content: center;
+    width: 100%;
+    justify-self: self-end;
+    height: max-content;
+    align-self: center;
   }
 `;
 
-export const Para = styled.p``;
-
-export const ContactImage = styled.img`
-  width: 100%;
-  height: auto;
-  display: none;
+export const DetailsInfo = styled.p`
+  /* padding: 2rem; */
 `;
 
-ContactImage.defaultProps = {
-  src: ContactSVG,
-  alt: "Contact Us",
-};
+export const ExternalLink = styled.a`
+  color: var(--color-black-70);
+  text-decoration: underline;
+  display: block;
+`;
+
+export const ContactForm = styled.form`
+  font-size: var(--fs-searchbar);
+  font-weight: bold;
+  color: var(--color-black-60);
+  display: grid;
+  justify-items: left;
+  gap: 1.4rem;
+`;
+
+export const FormGroup = styled.div`
+  width: 100%;
+`;
+
+export const FormLabel = styled.label`
+  margin-bottom: 0.4rem;
+  display: block;
+`;
+
+export const FormInputField = styled.input`
+  font-size: var(--fs-searchbar);
+  width: 100%;
+  border: 1px solid var(--color-black-60);
+  padding: 1rem;
+  border: 1px solid var(--color-black-60);
+  border-radius: 0.2rem;
+`;
+
+export const FormInputArea = styled.textarea`
+  height: 100px;
+  font-size: var(--fs-searchbar);
+  width: 100%;
+  border: 1px solid var(--color-black-60);
+  padding: 1rem;
+  border: 1px solid var(--color-black-60);
+  border-radius: 0.2rem;
+`;
+
+export const FormSubmitButton = styled.button`
+  font-size: var(--fs-cta-button);
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  padding: 1rem 1.8rem;
+  margin-top: 2rem;
+  background-color: var(--color-black-100);
+  color: var(--color-white-100);
+  border: 1px solid var(--color-black-100);
+  border-radius: 0.2rem;
+  transition: transform 300ms ease-in-out, margin-left 300ms ease-in-out;
+`;
