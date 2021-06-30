@@ -3,28 +3,19 @@ import { css } from "styled-components";
 export const variables = css`
   :root {
     /* Colors */
-
-    --color-black-100: hsla(0, 0%, 0%, 1); /* Primary Color */
-    --color-black-70: hsla(0, 0%, 0%, 0.7); /* Heading Color Black */
-    --color-black-60: hsla(0, 0%, 0%, 0.6); /* Paragraph Color Black */
-
-    --color-white-100: hsla(0, 0%, 100%, 1); /* Background Color - Body */
-    --color-white-70: hsla(0, 0%, 100%, 0.7); /* Heading Color White */
-    --color-white-60: hsla(0, 0%, 100%, 0.6); /* Paragraph Color White */
-
-    /* Navigation Item color Black */
+    --color-black-100: hsla(0, 0%, 0%, 1);
+    --color-black-70: hsla(0, 0%, 0%, 0.7);
+    --color-black-60: hsla(0, 0%, 0%, 0.6);
+    --color-white-100: hsla(0, 0%, 100%, 1);
+    --color-white-70: hsla(0, 0%, 100%, 0.7);
+    --color-white-60: hsla(0, 0%, 100%, 0.6);
     --color-nav-link-black: var(--color-black-60);
-    /* Navigation Item active color Black */
     --color-nav-link-black-active: var(--color-black-100);
-    /* Navigation Item color White */
     --color-nav-link-white: var(--color-white-60);
-    /* Navigation Item active color White */
     --color-nav-link-white-active: var(--color-white-100);
-
     --color-overlay-line-separator: hsla(0, 0%, 100%, 0.2);
 
     /* Fonts */
-
     --fs-cta-heading: 2.4rem;
     --fs-cta-heading-line-height: 3rem;
     --fs-cta-subheading: 1.5rem;
@@ -47,26 +38,6 @@ export const variables = css`
       --fs-cta-heading-line-height: 5.7rem;
       --fs-cta-subheading: 1.8rem;
       --fs-cta-subheading-line-height: 2.8rem;
-    }
-  }
-
-  @media screen and (min-width: 60rem) {
-    :root {
-      /* Fonts */
-      /* --fs-svg-icons: 4rem;
-      --fs-cta-heading: 4.5rem;
-      --fs-cta-subheading: 2.4rem;
-      --fs-nav-link-item: 1.8rem;
-      --fs-brand: 3.6rem;
-      --fs-searchbar: 2.4rem;
-      --fs-breadcrumbs: 1.8rem; */
-    }
-  }
-
-  @media screen and (min-width: 72rem) {
-    :root {
-      /* --fs-cta-heading: 7.2rem; */
-      /* --fs-cta-subheading: 3.2rem; */
     }
   }
 `;

@@ -22,6 +22,11 @@ export const AboutContainer = styled(Container)`
 export const AboutDetails = styled.div`
   display: grid;
   gap: 2rem;
+
+  @media screen and (min-width: 60rem) {
+    width: 400px;
+    justify-self: left;
+  }
 `;
 
 export const AboutHeading = styled.h2`
@@ -63,6 +68,7 @@ export const AboutImage = styled.img`
   @media screen and (min-width: 60rem) {
     height: auto;
     width: 480px;
+    justify-self: right;
   }
 `;
 
