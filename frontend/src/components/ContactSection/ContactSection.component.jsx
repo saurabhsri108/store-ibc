@@ -71,6 +71,12 @@ const ContactSection = () => {
             </ExternalLink>
           </DetailsInfo>
           <DetailsInfo>
+            YouTube:
+            <ExternalLink to="https://www.youtube.com/channel/UCHBONOEjtMti0oRA_qWADYA">
+              IBCoder | Tech Content Channel
+            </ExternalLink>
+          </DetailsInfo>
+          <DetailsInfo>
             Twitter:
             <ExternalLink to="https://twitter.com/saudev001">
               @saudev001

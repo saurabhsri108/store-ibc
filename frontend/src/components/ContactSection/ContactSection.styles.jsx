@@ -58,7 +58,7 @@ export const DetailsBox = styled.section`
     gap: 0;
     border: none;
     align-content: center;
-    width: 480px;
+    width: 540px;
     justify-self: right;
     height: max-content;
     align-self: center;

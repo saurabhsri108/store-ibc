@@ -67,7 +67,7 @@ export const AboutImage = styled.img`
 
   @media screen and (min-width: 60rem) {
     height: auto;
-    width: 480px;
+    width: 540px;
     justify-self: right;
   }
 `;

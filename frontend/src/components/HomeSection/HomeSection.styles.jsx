@@ -36,7 +36,7 @@ export const HomeImage = styled.img`
 
   @media screen and (min-width: 60rem) {
     height: auto;
-    width: 480px;
+    width: 540px;
     justify-self: right;
   }
 `;
@@ -90,6 +90,12 @@ export const CtaButton = styled.button`
 
   @media screen and (min-width: 60rem) {
     padding: 1.8rem 2.4rem;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: hsla(0, 0%, 0%, 0.8);
   }
 `;
 
