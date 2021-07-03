@@ -1,8 +1,13 @@
-import styled from "styled-components";
-import Container from "../Container/Container.component";
-import ContactSVG from "./images/contact_us.svg";
+import styled from "styled-components"
+import Container from "../Container/Container.component"
+import Button from "../FormComponents/Button.component"
+import InputField from "../FormComponents/InputField.component"
+import InputGroup from "../FormComponents/InputGroup.component"
+import Label from "../FormComponents/Label.component"
+import TextArea from "../FormComponents/TextArea.component"
+import ContactSVG from "./images/contact_us.svg"
 
-export const SectionContact = styled.section``;
+export const SectionContact = styled.section``
 
 export const ContactContainer = styled(Container)`
   gap: 4rem;
@@ -14,7 +19,7 @@ export const ContactContainer = styled(Container)`
   @media screen and (min-width: 60rem) {
     grid-template-columns: auto auto;
   }
-`;
+`
 
 export const ContactDetails = styled.div`
   display: grid;
@@ -24,7 +29,7 @@ export const ContactDetails = styled.div`
     width: 400px;
     justify-self: left;
   }
-`;
+`
 
 export const ContactHeading = styled.h2`
   text-align: left;
@@ -41,7 +46,7 @@ export const ContactHeading = styled.h2`
     display: block;
     margin-top: 1rem;
   }
-`;
+`
 
 export const DetailsBox = styled.section`
   display: grid;
@@ -63,17 +68,17 @@ export const DetailsBox = styled.section`
     height: max-content;
     align-self: center;
   }
-`;
+`
 
 export const DetailsInfo = styled.p`
   padding: 1rem 0;
-`;
+`
 
 export const ExternalLink = styled.a`
   color: var(--color-black-70);
   text-decoration: underline;
   display: block;
-`;
+`
 
 export const ContactForm = styled.form`
   font-size: var(--fs-searchbar);
@@ -82,52 +87,11 @@ export const ContactForm = styled.form`
   display: grid;
   justify-items: left;
   gap: 1.4rem;
-`;
+`
 
-export const FormGroup = styled.div`
-  width: 100%;
-`;
-
-export const FormLabel = styled.label`
-  margin-bottom: 0.4rem;
-  display: block;
-`;
-
-export const FormInputField = styled.input`
-  font-size: var(--fs-searchbar);
-  width: 100%;
-  border: 1px solid var(--color-black-60);
-  padding: 1rem;
-  border: 1px solid var(--color-black-60);
-  border-radius: 0.2rem;
-`;
-
-export const FormInputArea = styled.textarea`
-  height: 100px;
-  font-size: var(--fs-searchbar);
-  width: 100%;
-  border: 1px solid var(--color-black-60);
-  padding: 1rem;
-  border: 1px solid var(--color-black-60);
-  border-radius: 0.2rem;
-`;
-
-export const FormSubmitButton = styled.button`
-  font-size: var(--fs-cta-button);
-  text-transform: uppercase;
-  font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  padding: 1.4rem 1.8rem;
+export const FormSubmitButton = styled(Button)`
   margin-top: 2rem;
-  background-color: var(--color-black-100);
-  color: var(--color-white-100);
-  border: 1px solid var(--color-black-100);
-  border-radius: 0.2rem;
-
-  @media screen and (min-width: 60rem) {
-    padding: 1.8rem 2.4rem;
-  }
-`;
+`
 
 export const ContactImage = styled.img`
   width: 100%;
@@ -137,9 +101,9 @@ export const ContactImage = styled.img`
     height: auto;
     width: 480px;
   }
-`;
+`
 
 ContactImage.defaultProps = {
   src: ContactSVG,
   alt: "Contacts",
-};
+}

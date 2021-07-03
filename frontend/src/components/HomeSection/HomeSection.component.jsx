@@ -6,11 +6,11 @@ import {
   CtaPara,
   CtaButton,
   HomeImage,
-} from "./HomeSection.styles";
+} from "./HomeSection.styles"
 
 const HomeSection = () => {
   return (
-    <SectionHome>
+    <SectionHome id="home">
       <HomeContainer>
         <HomeImage />
         <InnerSection>
@@ -21,11 +21,11 @@ const HomeSection = () => {
             Get your most desired aspiration delivered to your home. Fast,
             Secure, and 100% satisfaction.
           </CtaPara>
-          <CtaButton>Browse Products</CtaButton>
+          <CtaButton to="/products">Browse Products</CtaButton>
         </InnerSection>
       </HomeContainer>
     </SectionHome>
-  );
-};
+  )
+}
 
-export default HomeSection;
+export default HomeSection

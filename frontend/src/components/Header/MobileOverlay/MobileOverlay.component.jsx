@@ -6,7 +6,7 @@ import {
   FaWallet,
   FaUserCircle,
   FaShoppingCart,
-} from "react-icons/fa";
+} from "react-icons/fa"
 
 import {
   Overlay,
@@ -19,7 +19,7 @@ import {
   ONavLink,
   Octa,
   OctaButton,
-} from "./MobileOverlay.styles";
+} from "./MobileOverlay.styles"
 
 const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
   return (
@@ -29,7 +29,7 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
       onClick={overlayHandler}
     >
       <OLogin>
-        <OLoginLink to="/" onClick={overlayHandler}>
+        <OLoginLink to="/auth/sign-in" onClick={overlayHandler}>
           <FaUserCircle onClick={overlayHandler} />
           <OLoginPara onClick={overlayHandler}>Login &amp; Signup</OLoginPara>
         </OLoginLink>
@@ -60,24 +60,24 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
       <ONav>
         <ul>
           <li>
-            <ONavLink to="/orders">
+            <ONavLink to="/user/orders">
               <FaWallet />
               My Orders
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/">
+            <ONavLink to="/user/cart">
               <FaShoppingCart /> My Cart
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/">
+            <ONavLink to="/user/waitlist">
               <FaHeart />
               My Wishlist
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/">
+            <ONavLink to="/user/account">
               <FaUserCircle />
               My Account
             </ONavLink>
@@ -85,11 +85,11 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
         </ul>
       </ONav>
       <Octa>
-        <OctaButton>Browse Products</OctaButton>
-        <OctaButton>Subscribe to Get Updates</OctaButton>
+        <OctaButton to="/products">Browse Products</OctaButton>
+        <OctaButton to="/subscription">Subscribe to Get Updates</OctaButton>
       </Octa>
     </Overlay>
-  );
-};
+  )
+}
 
-export default MobileOverlay;
+export default MobileOverlay

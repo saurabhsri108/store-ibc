@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
 export const variables = css`
   :root {
@@ -9,6 +9,18 @@ export const variables = css`
     --color-white-100: hsla(0, 0%, 100%, 1);
     --color-white-70: hsla(0, 0%, 100%, 0.7);
     --color-white-60: hsla(0, 0%, 100%, 0.6);
+    --color-google-signin-100: hsla(
+      217.41573033707866,
+      89.00000000000001%,
+      60.7843137254902%,
+      1
+    );
+    --color-google-signin-90: hsla(
+      217.41573033707866,
+      89.00000000000001%,
+      60.7843137254902%,
+      0.9
+    );
     --color-nav-link-black: var(--color-black-60);
     --color-nav-link-black-active: var(--color-black-100);
     --color-nav-link-white: var(--color-white-60);
@@ -40,4 +52,4 @@ export const variables = css`
       --fs-cta-subheading-line-height: 2.8rem;
     }
   }
-`;
+`

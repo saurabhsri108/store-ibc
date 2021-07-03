@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FaSignInAlt } from "react-icons/fa";
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import { FaSignInAlt } from "react-icons/fa"
 
 export const UserActionsNav = styled.nav`
   margin-left: 0.625rem;
   position: relative;
-`;
+`
 
 export const UserNavlist = styled.ul`
   display: grid;
@@ -21,7 +21,7 @@ export const UserNavlist = styled.ul`
   @media screen and (min-width: 45rem) {
     gap: 2rem;
   }
-`;
+`
 
 export const UserCartLink = styled(Link)`
   display: flex;
@@ -29,7 +29,7 @@ export const UserCartLink = styled(Link)`
   gap: 0.4rem;
   position: relative;
   color: var(--color-white-70);
-`;
+`
 
 export const UserCartHeading = styled.span`
   font-family: "Raleway", sans-serif;
@@ -38,7 +38,7 @@ export const UserCartHeading = styled.span`
   @media screen and (min-width: 45rem) {
     display: block;
   }
-`;
+`
 
 export const UserCartNumber = styled.span`
   position: absolute;
@@ -53,11 +53,12 @@ export const UserCartNumber = styled.span`
   @media screen and (min-width: 45rem) {
     left: -1.6rem;
   }
-`;
+`
 
 export const UserLoginLink = styled(Link)`
   color: var(--color-black-100);
-`;
+  position: relative;
+`
 
 export const UserLoginHeading = styled.span`
   display: none;
@@ -73,7 +74,7 @@ export const UserLoginHeading = styled.span`
   @media screen and (min-width: 45rem) {
     display: block;
   }
-`;
+`
 
 export const StyledFaSignInAlt = styled(FaSignInAlt)`
   color: var(--color-white-100);
@@ -81,4 +82,4 @@ export const StyledFaSignInAlt = styled(FaSignInAlt)`
   @media screen and (min-width: 45rem) {
     display: none;
   }
-`;
+`

@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const BigScreenNav = styled.nav`
   display: none;
   @media screen and (min-width: 60rem) {
     display: grid;
   }
-`;
+`
 
-export const BigNavlist = styled.li`
+export const BigNavlist = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-items: start;
@@ -18,4 +18,4 @@ export const BigNavlist = styled.li`
   font-size: var(--fs-big-nav-link-item);
   font-weight: 600;
   gap: 2rem;
-`;
+`

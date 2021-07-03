@@ -1,6 +1,6 @@
-import BigLoginOverlay from "../BigLoginOverlay/BigLoginOverlay.component";
-import { FaOpencart } from "react-icons/fa";
-import { useState } from "react";
+import BigLoginOverlay from "../BigLoginOverlay/BigLoginOverlay.component"
+import { FaOpencart } from "react-icons/fa"
+import { useState } from "react"
 import {
   UserActionsNav,
   UserNavlist,
@@ -10,14 +10,14 @@ import {
   UserLoginLink,
   UserLoginHeading,
   StyledFaSignInAlt,
-} from "./UserActions.styles";
+} from "./UserActions.styles"
 
 const UserActionsNavigation = () => {
-  const [isBigLoginOpen, toggleIsBigLoginOpen] = useState(false);
+  const [isBigLoginOpen, toggleIsBigLoginOpen] = useState(false)
 
   const overlayLoginHandler = () => {
-    toggleIsBigLoginOpen((prevIsOpen) => !prevIsOpen);
-  };
+    toggleIsBigLoginOpen((prevIsOpen) => !prevIsOpen)
+  }
 
   return (
     <UserActionsNav>
@@ -31,7 +31,7 @@ const UserActionsNavigation = () => {
         </li>
         <li>
           <UserLoginLink
-            to="/"
+            to="/auth/sign-in"
             onMouseEnter={overlayLoginHandler}
             onMouseLeave={overlayLoginHandler}
           >
@@ -45,7 +45,7 @@ const UserActionsNavigation = () => {
         </li>
       </UserNavlist>
     </UserActionsNav>
-  );
-};
+  )
+}
 
-export default UserActionsNavigation;
+export default UserActionsNavigation

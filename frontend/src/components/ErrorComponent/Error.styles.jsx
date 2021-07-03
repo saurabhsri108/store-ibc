@@ -1,13 +1,9 @@
 import styled from "styled-components"
-import HomeSVG from "./images/m_home.svg"
+import Error from "./images/404.svg"
 import Container from "../Container/Container.component"
 import { ButtonLink } from "../FormComponents"
 
-export const SectionHome = styled.section`
-  background-color: var(--color-white-100);
-`
-
-export const HomeContainer = styled(Container)`
+export const ErrorContainer = styled(Container)`
   gap: 4rem;
 
   @media screen and (min-width: 45rem) {
@@ -19,7 +15,7 @@ export const HomeContainer = styled(Container)`
   }
 `
 
-export const InnerSection = styled.section`
+export const ErrorSection = styled.section`
   display: grid;
   justify-items: left;
   gap: 2rem;
@@ -30,19 +26,7 @@ export const InnerSection = styled.section`
   }
 `
 
-export const HomeImage = styled.img`
-  width: 100%;
-  height: auto;
-  order: 1;
-
-  @media screen and (min-width: 60rem) {
-    height: auto;
-    width: 540px;
-    justify-self: right;
-  }
-`
-
-export const CtaHeading = styled.h1`
+export const ErrorHeading = styled.h1`
   text-align: left;
   font-size: var(--fs-cta-heading);
   line-height: var(--fs-cta-heading-line-height);
@@ -64,7 +48,7 @@ export const CtaHeading = styled.h1`
   }
 `
 
-export const CtaPara = styled.p`
+export const ErrorPara = styled.p`
   text-align: left;
   font-size: var(--fs-cta-subheading);
   line-height: var(--fs-cta-subheading-line-height);
@@ -74,11 +58,23 @@ export const CtaPara = styled.p`
   margin-top: -1.2rem;
 `
 
-export const CtaButton = styled(ButtonLink)`
+export const ErrorButton = styled(ButtonLink)`
   margin-top: 0.325rem;
 `
 
-HomeImage.defaultProps = {
-  src: HomeSVG,
-  alt: "Shopping Store Home",
+export const ErrorImage = styled.img`
+  width: 100%;
+  height: auto;
+  order: 1;
+
+  @media screen and (min-width: 60rem) {
+    height: auto;
+    width: 540px;
+    justify-self: right;
+  }
+`
+
+ErrorImage.defaultProps = {
+  src: Error,
+  alt: "404 Error",
 }

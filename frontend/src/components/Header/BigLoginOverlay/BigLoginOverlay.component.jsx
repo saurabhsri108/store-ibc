@@ -3,13 +3,8 @@ import {
   LoginNavlist,
   LoginNavLink,
   LoginSignUp,
-} from "./BigLoginOverlay.styles";
-import {
-  FaHeart,
-  FaWallet,
-  FaUserCircle,
-  FaShoppingCart,
-} from "react-icons/fa";
+} from "./BigLoginOverlay.styles"
+import { FaHeart, FaWallet, FaUserCircle, FaShoppingCart } from "react-icons/fa"
 
 const BigLoginOverlay = ({ isBigLoginOpen, toggleIsBigLoginOpen }) => {
   return (
@@ -39,11 +34,13 @@ const BigLoginOverlay = ({ isBigLoginOpen, toggleIsBigLoginOpen }) => {
           </LoginNavLink>
         </li>
         <li>
-          <LoginSignUp to="/">Sign Up</LoginSignUp>
+          <LoginSignUp to="/auth/sign-up" white={1} sm={1}>
+            Sign Up
+          </LoginSignUp>
         </li>
       </LoginNavlist>
     </LoginNav>
-  );
-};
+  )
+}
 
-export default BigLoginOverlay;
+export default BigLoginOverlay

@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import { ButtonLink } from "../../FormComponents"
 
 export const LoginNav = styled.nav`
   position: absolute;
@@ -14,14 +15,14 @@ export const LoginNav = styled.nav`
   display: none;
 
   @media screen and (min-width: 60rem) {
-    /* display: block; */
+    display: ${({ isBigLoginOpen }) => (isBigLoginOpen ? "block" : "none")};
   }
-`;
+`
 
 export const LoginNavlist = styled.ul`
   width: 100%;
   list-style: none;
-`;
+`
 
 export const LoginNavLink = styled(Link)`
   display: flex;
@@ -36,17 +37,11 @@ export const LoginNavLink = styled(Link)`
   &:active {
     background-color: hsla(0, 0%, 100%, 0.2);
   }
-`;
+`
 
-export const LoginSignUp = styled(Link)`
+export const LoginSignUp = styled(ButtonLink)`
   display: block;
-  background: var(--color-white-100);
-  color: var(--color-black-100);
-  font-weight: 700;
   text-align: center;
   width: 80%;
   margin: 2rem auto;
-  padding: 1rem 2rem;
-  border: 1px solid var(--color-white-100);
-  border-radius: 0.2rem;
-`;
+`

@@ -1,28 +1,25 @@
-import { useState } from "react";
+import { useState } from "react"
+import { InputField, InputGroup, Label, TextArea } from "../FormComponents"
 import {
   SectionContact,
   ContactContainer,
-  FormSubmitButton,
   ContactHeading,
   ContactForm,
-  FormGroup,
-  FormLabel,
-  FormInputField,
-  FormInputArea,
+  FormSubmitButton,
   ContactDetails,
   DetailsBox,
   ExternalLink,
   DetailsInfo,
-} from "./ContactSection.styles";
+} from "./ContactSection.styles"
 
 const ContactSection = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
 
   const submitContactHandler = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   return (
     <SectionContact id="contact">
@@ -30,37 +27,37 @@ const ContactSection = () => {
         <ContactDetails>
           <ContactHeading>Contact Us</ContactHeading>
           <ContactForm onSubmit={submitContactHandler}>
-            <FormGroup>
-              <FormLabel>Name</FormLabel>
-              <FormInputField
+            <InputGroup>
+              <Label>Name</Label>
+              <InputField
                 type="text"
                 placeholder="Enter your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Email</FormLabel>
-              <FormInputField
+            </InputGroup>
+            <InputGroup>
+              <Label>Email</Label>
+              <InputField
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Message</FormLabel>
-              <FormInputArea
+            </InputGroup>
+            <InputGroup>
+              <Label>Message</Label>
+              <TextArea
                 placeholder="Enter your message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
-            </FormGroup>
-            <FormGroup>
+            </InputGroup>
+            <InputGroup>
               <FormSubmitButton type="submit">Send Message</FormSubmitButton>
-            </FormGroup>
+            </InputGroup>
           </ContactForm>
         </ContactDetails>
         <DetailsBox>
@@ -97,7 +94,7 @@ const ContactSection = () => {
         </DetailsBox>
       </ContactContainer>
     </SectionContact>
-  );
-};
+  )
+}
 
-export default ContactSection;
+export default ContactSection

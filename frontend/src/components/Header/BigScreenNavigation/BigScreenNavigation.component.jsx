@@ -1,5 +1,5 @@
-import { BigScreenNav, BigNavlist } from "./BigScreenNavigation.styles";
-import { Scroller } from "../Header.styles";
+import { BigScreenNav, BigNavlist } from "./BigScreenNavigation.styles"
+import { Scroller } from "../Header.styles"
 
 const BigScreenNavigation = () => {
   return (
@@ -18,7 +18,7 @@ const BigScreenNavigation = () => {
         </li>
       </BigNavlist>
     </BigScreenNav>
-  );
-};
+  )
+}
 
-export default BigScreenNavigation;
+export default BigScreenNavigation
