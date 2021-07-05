@@ -12,8 +12,12 @@ import {
   AuthLinks,
 } from "../AuthForm.styles"
 import { FaGooglePlusSquare, FaSignInAlt } from "react-icons/fa"
+import { GoogleLogin } from "react-google-login"
 
 const SignInForm = () => {
+  const responseGoogle = (response) => {
+    console.log(response)
+  }
   return (
     <AuthContainer>
       <AuthForm>
@@ -51,13 +55,24 @@ const SignInForm = () => {
           </Button>
         </InputGroup>
         <InputGroup>
-          <Button
-            bg="var(--color-google-signin-100)"
-            bgh="var(--color-google-signin-90)"
-          >
-            <FaGooglePlusSquare />
-            Sign In Using Google
-          </Button>
+          <GoogleLogin
+            clientId="737658306511-oi1irevlsosf3utuvcnc5diu8rrpbhe2.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <Button
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                bg="var(--color-google-signin-100)"
+                bgh="var(--color-google-signin-90)"
+              >
+                <FaGooglePlusSquare />
+                Sign in with Google
+              </Button>
+            )}
+            buttonText="Sign In Using Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
         </InputGroup>
         <InputGroup>
           <AuthLinks to="/auth/forgot-password">Forgot Password?</AuthLinks>

@@ -6,6 +6,7 @@ export const variables = css`
     --color-black-100: hsla(0, 0%, 0%, 1);
     --color-black-70: hsla(0, 0%, 0%, 0.7);
     --color-black-60: hsla(0, 0%, 0%, 0.6);
+    --color-black-10: hsla(0, 0%, 0%, 0.1);
     --color-white-100: hsla(0, 0%, 100%, 1);
     --color-white-70: hsla(0, 0%, 100%, 0.7);
     --color-white-60: hsla(0, 0%, 100%, 0.6);
@@ -42,6 +43,10 @@ export const variables = css`
     --fs-footer: 1rem;
     --fs-login: var(--fs-brand);
     --fs-svg-icons: var(--fs-brand);
+    --fs-product-title: 1.8rem;
+    --fs-product-description: 1.3rem;
+    --fs-product-ratings: 1.2rem;
+    --fs-product-price: 2.4rem;
   }
 
   @media screen and (min-width: 45rem) {
@@ -50,6 +55,10 @@ export const variables = css`
       --fs-cta-heading-line-height: 5.7rem;
       --fs-cta-subheading: 1.8rem;
       --fs-cta-subheading-line-height: 2.8rem;
+      --fs-product-title: 2.4rem;
+      --fs-product-description: 1.5rem;
+      --fs-product-ratings: 1.4rem;
+      --fs-product-price: 2.4rem;
     }
   }
 `

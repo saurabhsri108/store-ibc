@@ -1,10 +1,6 @@
 import styled from "styled-components"
 import Container from "../Container/Container.component"
 import Button from "../FormComponents/Button.component"
-import InputField from "../FormComponents/InputField.component"
-import InputGroup from "../FormComponents/InputGroup.component"
-import Label from "../FormComponents/Label.component"
-import TextArea from "../FormComponents/TextArea.component"
 import ContactSVG from "./images/contact_us.svg"
 
 export const SectionContact = styled.section``

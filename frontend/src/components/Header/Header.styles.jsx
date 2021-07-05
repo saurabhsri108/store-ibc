@@ -1,18 +1,19 @@
-import styled from "styled-components";
-import { Link as ScrollerLink } from "react-scroll";
+import styled from "styled-components"
+import { Link as ScrollerLink } from "react-scroll"
 
 export const MainHeader = styled.header`
   position: sticky;
   top: 0;
   background-color: var(--color-black-100);
   padding: 1.2rem 0;
-`;
+  z-index: 10;
+`
 
 export const HeaderContainer = styled.section`
   width: 80%;
   margin: auto;
   max-width: 1080px;
-`;
+`
 
 export const FirstHeaderSection = styled.section`
   display: grid;
@@ -25,7 +26,7 @@ export const FirstHeaderSection = styled.section`
   @media screen and (min-width: 60rem) {
     grid-template-columns: auto auto 1fr auto;
   }
-`;
+`
 
 export const Scroller = styled(ScrollerLink)`
   color: var(--color-white-60);
@@ -35,7 +36,7 @@ export const Scroller = styled(ScrollerLink)`
   &.active {
     color: var(--color-white-100);
   }
-`;
+`
 
 export const SearchIcon = styled.div`
   color: var(--color-black-70);
@@ -50,4 +51,4 @@ export const SearchIcon = styled.div`
   @media screen and (min-width: 45rem) {
     padding: 0 1.2rem;
   }
-`;
+`

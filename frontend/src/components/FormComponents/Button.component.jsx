@@ -9,7 +9,7 @@ const CustomButton = styled.button`
   outline: none;
   background-color: ${({ bg }) => bg || "var(--color-black-100)"};
   color: ${({ color }) => color || "var(--color-white-100)"};
-  font-size: var(--fs-cta-button);
+  font-size: ${({ fs }) => fs || "var(--fs-cta-button)"};
   font-family: "Raleway", sans-serif;
   text-transform: ${({ sm }) => (sm ? "" : "uppercase")};
   font-weight: 700;
