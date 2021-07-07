@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
-import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { Link as ScrollerLink } from "react-scroll";
+import styled, { css } from "styled-components"
+import { FaTimes } from "react-icons/fa"
+import { Link } from "react-router-dom"
+import { Link as ScrollerLink } from "react-scroll"
 
 export const Overlay = styled.section`
   position: fixed;
@@ -16,6 +16,7 @@ export const Overlay = styled.section`
   top: 0;
   transition: 0.2s ease-in-out;
   left: ${({ isOverlayOpen }) => (isOverlayOpen ? "0" : "-100%")};
+  overflow: auto;
 
   @media screen and (min-width: 45rem) {
     width: 50%;
@@ -24,7 +25,7 @@ export const Overlay = styled.section`
   @media screen and (min-width: 60rem) {
     display: none;
   }
-`;
+`
 
 export const OLogin = styled.section`
   display: flex;
@@ -39,7 +40,7 @@ export const OLogin = styled.section`
   &:active {
     background: hsla(0, 10%, 100%, 0.06);
   }
-`;
+`
 
 export const OLoginLink = styled(Link)`
   display: grid;
@@ -47,17 +48,19 @@ export const OLoginLink = styled(Link)`
   place-items: center;
   font-size: var(--fs-login);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
   color: var(--color-white-100);
   gap: 1rem;
   font-weight: 600;
-`;
+`
 
 export const OLoginPara = styled.p`
   font-family: "Raleway", sans-serif;
   @media screen and (min-width: 45rem) {
     padding: 2rem 0;
   }
-`;
+`
 
 export const StyledFaTimes = styled(FaTimes)`
   position: absolute;
@@ -71,7 +74,7 @@ export const StyledFaTimes = styled(FaTimes)`
   @media screen and (min-width: 45rem) {
     top: 4.6rem;
   }
-`;
+`
 
 export const ONav = styled.nav`
   width: 100%;
@@ -84,7 +87,7 @@ export const ONav = styled.nav`
   p {
     font-family: "Raleway", sans-serif;
   }
-`;
+`
 
 const navLinkStyles = css`
   display: grid;
@@ -105,15 +108,15 @@ const navLinkStyles = css`
   &:active {
     background-color: hsla(0, 10%, 100%, 0.06);
   }
-`;
+`
 
 export const ONavLink = styled(Link)`
   ${navLinkStyles}
-`;
+`
 
 export const Scroller = styled(ScrollerLink)`
   ${navLinkStyles}
-`;
+`
 
 export const Octa = styled.section`
   width: 100%;
@@ -123,7 +126,7 @@ export const Octa = styled.section`
   gap: 2rem;
   margin-top: 1rem;
   font-family: "Raleway", sans-serif;
-`;
+`
 
 export const OctaButton = styled.button`
   border: none;
@@ -133,9 +136,9 @@ export const OctaButton = styled.button`
   text-transform: uppercase;
   background-color: var(--color-black-100);
   color: var(--color-white-100);
-  border: 0.2rem solid var(--color-white-100);
-  border-radius: 4rem;
-  padding: 1.2rem 1.8rem;
+  border: 0.1rem solid var(--color-white-100);
+  border-radius: 0.2rem;
+  padding: 1.8rem 2.4rem;
   cursor: pointer;
   transition: all 0.125s ease-in;
 
@@ -160,4 +163,4 @@ export const OctaButton = styled.button`
       background-color: var(--color-white-70);
     }
   }
-`;
+`

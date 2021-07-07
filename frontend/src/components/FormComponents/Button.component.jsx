@@ -17,6 +17,7 @@ const CustomButton = styled.button`
   padding: ${({ sm }) => (sm ? "0.8rem 2rem" : "1.4rem 1.8rem")};
   border-radius: 0.2rem;
   cursor: pointer;
+  justify-content: center;
 
   @media screen and (min-width: 60rem) {
     padding: ${({ sm }) => (sm ? "0.8rem 2rem" : "1.8rem 2.4rem")};

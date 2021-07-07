@@ -1,25 +1,27 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
   MainHeader,
   HeaderContainer,
   FirstHeaderSection,
-} from "./Header.styles";
-import MobileOverlay from "./MobileOverlay/MobileOverlay.component";
-import MobileSearchBar from "./MobileSearchBar/MobileSearchBar.component";
-import BigSearchBar from "./BigSearchBar/BigSearchBar.component";
-import UserActionsNavigation from "./UserActions/UserActions.component";
-import BigScreenNavigation from "./BigScreenNavigation/BigScreenNavigation.component";
-import SiteLogo from "./Logo/SiteLogo.component";
+} from "./Header.styles"
+import MobileOverlay from "./MobileOverlay/MobileOverlay.component"
+import MobileSearchBar from "./MobileSearchBar/MobileSearchBar.component"
+import BigSearchBar from "./BigSearchBar/BigSearchBar.component"
+import UserActionsNavigation from "./UserActions/UserActions.component"
+import BigScreenNavigation from "./BigScreenNavigation/BigScreenNavigation.component"
+import SiteLogo from "./Logo/SiteLogo.component"
+import { useLocation } from "react-router-dom"
 
 const Header = (props) => {
-  const [isOverlayOpen, toggleIsOverlayOpen] = useState(false);
+  const [isOverlayOpen, toggleIsOverlayOpen] = useState(false)
+  const { pathname } = useLocation()
 
   const overlayHandler = () => {
-    toggleIsOverlayOpen((prevIsOpen) => !prevIsOpen);
-  };
+    toggleIsOverlayOpen((prevIsOpen) => !prevIsOpen)
+  }
 
   return (
-    <MainHeader id="home">
+    <MainHeader pathname={pathname}>
       <MobileOverlay
         isOverlayOpen={isOverlayOpen}
         overlayHandler={overlayHandler}
@@ -34,7 +36,7 @@ const Header = (props) => {
         <MobileSearchBar />
       </HeaderContainer>
     </MainHeader>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -2,11 +2,11 @@ import styled from "styled-components"
 import { Link as ScrollerLink } from "react-scroll"
 
 export const MainHeader = styled.header`
-  position: sticky;
-  top: 0;
+  position: ${({ pathname }) => (pathname === "/" ? "sticky" : "")};
+  top: ${({ pathname }) => (pathname === "/" ? "0" : "")};
+  z-index: ${({ pathname }) => (pathname === "/" ? "10" : "")};
   background-color: var(--color-black-100);
   padding: 1.2rem 0;
-  z-index: 10;
 `
 
 export const HeaderContainer = styled.section`

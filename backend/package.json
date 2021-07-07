@@ -1,0 +1,21 @@
+{
+  "name": "storejs-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "StoreJS Backend Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "author": "Saurabh Srivastava @saudev001",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}

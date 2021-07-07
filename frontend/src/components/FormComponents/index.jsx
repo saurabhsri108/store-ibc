@@ -5,7 +5,8 @@ import TextArea from "./TextArea.component"
 import Button from "./Button.component"
 import ButtonLink from "./ButtonLink.component"
 import Form from "./Form.component"
-import InputCheckbox from "./InputCheckbox"
+import InputCheckbox from "./InputCheckbox.component"
+import InputRadio from "./InputRadio.component"
 
 export {
   InputField,
@@ -16,4 +17,5 @@ export {
   ButtonLink,
   Form,
   InputCheckbox,
+  InputRadio,
 }

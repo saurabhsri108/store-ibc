@@ -1,23 +1,13 @@
 import styled from "styled-components"
 import Card from "../Card/Card.component"
 import Container from "../Container/Container.component"
+import { Button } from "../FormComponents"
 
 export const ProductsContainer = styled(Container)`
   grid-template-columns: auto auto;
 `
 
-export const FilterSection = styled(Card)`
-  display: none;
-  @media screen and (min-width: 60rem) {
-    display: block;
-  }
-`
-
 export const ListingsSection = styled.div``
-
-export const SortingSection = styled(Card)`
-  margin-bottom: 2rem;
-`
 
 export const PaginationSection = styled(Card)`
   margin-top: 2rem;
@@ -106,4 +96,32 @@ export const ProductActions = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+`
+
+export const ButtonActions = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media screen and (min-width: 60rem) {
+    display: none;
+  }
+`
+export const ProductButton = styled(Button)`
+  text-transform: uppercase;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 1.8rem;
+  border-radius: 0;
+  border: 1px solid var(--color-black-100);
+  background-color: var(--color-white-100);
+  color: var(--color-black-100);
+
+  &:hover,
+  &:focus {
+    background-color: hsla(0, 0%, 100%, 0.8);
+  }
+
+  @media screen and (min-width: 45rem) {
+    padding: 1.8rem 1rem;
+  }
 `

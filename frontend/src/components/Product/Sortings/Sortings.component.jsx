@@ -1,22 +1,32 @@
-import React from "react"
+import { InputRadio } from "../../FormComponents"
+import {
+  SortContainer,
+  CategoryHeading,
+  SortingActions,
+  SortHeading,
+  SortButton,
+} from "./Sorting.styles"
+import { StyledFaTimes } from "../Filters/Filters.styles"
 
-const Sortings = () => {
+const Sortings = ({ isSortOpen, setIsSortOpen }) => {
   return (
-    <div>
-      <div className="breadcrumbs">
-        <span>Home &gt;</span>
-        <span>Products &gt;</span>
-      </div>
-      <div className="category-heading">
-        All Products (showing 1 - 5 products)
-      </div>
-      <div className="sorting-actions">
-        <span>Sort by</span>
-        <span>Prices - Low to High</span>
-        <span>Prices - High to Low</span>
-        <span>Average Ratings - High to Low</span>
-      </div>
-    </div>
+    <SortContainer isSortOpen={isSortOpen}>
+      <CategoryHeading>All Products (showing 1 - 9 products)</CategoryHeading>
+      <SortingActions>
+        <SortHeading>Sort by</SortHeading>
+        <StyledFaTimes onClick={setIsSortOpen} />
+        <InputRadio name="sort" id="lth" value="lth">
+          Prices - Low to High
+        </InputRadio>
+        <InputRadio name="sort" id="htl" value="htl">
+          Prices - High to Low
+        </InputRadio>
+        <InputRadio name="sort" id="ahtl" value="ahtl">
+          Average Ratings - High to Low
+        </InputRadio>
+      </SortingActions>
+      <SortButton onClick={setIsSortOpen}>Sort</SortButton>
+    </SortContainer>
   )
 }
 

@@ -41,9 +41,9 @@ export const variables = css`
     --fs-overlay-buttons: 1.3rem;
     --fs-nav-link-item: 1.4rem;
     --fs-footer: 1rem;
-    --fs-login: var(--fs-brand);
     --fs-svg-icons: var(--fs-brand);
     --fs-product-title: 1.8rem;
+    --fs-login: var(--fs-product-title);
     --fs-product-description: 1.3rem;
     --fs-product-ratings: 1.2rem;
     --fs-product-price: 2.4rem;

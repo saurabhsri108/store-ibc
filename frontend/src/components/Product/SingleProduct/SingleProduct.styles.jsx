@@ -146,7 +146,6 @@ export const SingleProductActions = styled.div`
   position: sticky;
   z-index: 1;
   bottom: 0;
-  background: var(--color-black-100);
   @media screen and (min-width: 45rem) {
     width: 100%;
     position: static;
