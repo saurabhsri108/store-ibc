@@ -1,0 +1,23 @@
+{
+  "name": "storejs-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "StoreJS API MERN Stack",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon backend/server"
+  },
+  "repository": "https://github.com/vasudeveloper001/store-ibc.git",
+  "author": "Saurabh Srivastava <vasudeveloper001@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}

@@ -45,6 +45,7 @@ const SignUpForm = () => {
             id="password"
             placeholder="********"
             min="8"
+            autoComplete="on"
             required
           />
         </InputGroup>
@@ -56,6 +57,7 @@ const SignUpForm = () => {
             id="cpassword"
             placeholder="********"
             min="8"
+            autoComplete="on"
             required
           />
         </InputGroup>

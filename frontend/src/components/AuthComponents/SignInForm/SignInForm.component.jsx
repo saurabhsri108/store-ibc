@@ -16,7 +16,14 @@ import { GoogleLogin } from "react-google-login"
 
 const SignInForm = () => {
   const responseGoogle = (response) => {
-    console.log(response)
+    if (response.error) {
+      console.error("Login screen closed by the user")
+      return
+    }
+    const { profileObj, tokenId } = response
+    const { email, imageUrl, name, givenName, familyName } = profileObj
+
+    localStorage.setItem("profile", JSON.stringify(profileObj))
   }
   return (
     <AuthContainer>
@@ -40,6 +47,7 @@ const SignInForm = () => {
             id="password"
             placeholder="********"
             min="8"
+            autoComplete="on"
             required
           />
         </InputGroup>
