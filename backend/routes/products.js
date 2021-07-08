@@ -1,5 +1,5 @@
 import { Router } from "express"
-const products = { name: "API" }
+const products = [{ _id: "1", name: "API" }]
 
 const route = Router()
 
@@ -8,12 +8,13 @@ route.get("/products", (req, res) => {
 })
 
 route.get("/products/:id", (req, res) => {
-  const product = products.filter((p) => p._id === req.params.id)
-  res.send(product)
+  const product = products.find((p) => p._id === req.params.id)
+  res.json(product)
 })
 
 route.post("/products", (req, res) => {
-  console.log(res.params)
+  products.push(req.body)
+  res.status(200).send("Product added successfully to the database")
 })
 
 route.put("/products/:id", (req, res) => {
