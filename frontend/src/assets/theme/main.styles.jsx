@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
 export const main = css`
   *,
@@ -16,10 +16,12 @@ export const main = css`
 
   html {
     font-size: 62.5%;
+    height: 100%;
   }
 
   body {
     background-color: var(--primary-color);
+    height: 100%;
   }
 
   h1,
@@ -39,4 +41,10 @@ export const main = css`
   a {
     text-decoration: none;
   }
-`;
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+`

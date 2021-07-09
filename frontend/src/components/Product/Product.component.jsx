@@ -19,7 +19,7 @@ import { FaHeart, FaCartPlus } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 const Product = ({
-  id,
+  _id,
   title,
   rating = 4.5,
   ratingCount = 1000,
@@ -35,12 +35,12 @@ const Product = ({
     <Card>
       <ProductCategory>{category}</ProductCategory>
       <ProductImageBox>
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${_id}`}>
           <ProductImage src={image} alt={title} />
         </Link>
       </ProductImageBox>
       <ProductDetails>
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${_id}`}>
           <ProductTitle>{title}</ProductTitle>
         </Link>
         <ProductRatings>

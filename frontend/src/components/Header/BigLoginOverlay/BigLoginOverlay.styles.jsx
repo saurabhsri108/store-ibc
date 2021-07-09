@@ -8,8 +8,7 @@ export const LoginNav = styled.nav`
   left: -4.2rem;
   top: 6.125rem;
   background: var(--color-black-100);
-  /* opacity: 0;
-  z-index: -1; */
+  z-index: 10;
   transition: all 0.3s ease-in-out;
 
   display: none;

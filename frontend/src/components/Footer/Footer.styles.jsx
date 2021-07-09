@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const MainFooter = styled.footer`
   background-color: var(--color-black-100);
+  margin-top: auto;
   @media screen and (min-width: 45rem) {
     padding: 1rem 0;
   }
-`;
+`
 
 export const Container = styled.section`
   width: 80%;
@@ -16,9 +17,9 @@ export const Container = styled.section`
   font-size: var(--fs-footer);
   font-weight: 600;
   color: var(--color-white-100);
-`;
+`
 
 export const ExternalLink = styled.a`
   color: var(--color-white-100);
   font-weight: 700;
-`;
+`

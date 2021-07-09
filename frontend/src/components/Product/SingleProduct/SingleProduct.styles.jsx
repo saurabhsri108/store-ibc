@@ -49,6 +49,7 @@ export const SingleProductHeading = styled.h2`
 
   @media screen and (min-width: 45rem) {
     text-align: left;
+    font-size: 2.4rem;
   }
 `
 export const SingleProductRatings = styled.div`

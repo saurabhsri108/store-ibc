@@ -4,6 +4,7 @@ import cors from "cors"
 import chalk from "chalk"
 import connectDB from "./config/db.config.js"
 import productRoutes from "./routes/products.js"
+import { errorHandler, notFound404 } from "./middleware/error.middleware.js"
 
 dotenv.config()
 connectDB()
@@ -12,11 +13,13 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.get("/", (req, res) => {
+app.get("/api/v1/", (req, res) => {
   res.send("StoreJS API is up and running...")
 })
 
-app.use("/api/v1/", productRoutes)
+app.use("/api/v1/products", productRoutes)
+app.use(notFound404)
+app.use(errorHandler)
 
 app.listen(
   `${process.env.PORT}`,

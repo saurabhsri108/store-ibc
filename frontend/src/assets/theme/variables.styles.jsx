@@ -55,7 +55,7 @@ export const variables = css`
       --fs-cta-heading-line-height: 5.7rem;
       --fs-cta-subheading: 1.8rem;
       --fs-cta-subheading-line-height: 2.8rem;
-      --fs-product-title: 2.4rem;
+      /* --fs-product-title: 2.4rem; */
       --fs-product-description: 1.5rem;
       --fs-product-ratings: 1.4rem;
       --fs-product-price: 2.4rem;

@@ -29,7 +29,7 @@ const SingleProduct = ({
   rating,
   reviews,
   ratingCount,
-  status,
+  countInStock,
 }) => {
   return (
     <SingleProductContainer>
@@ -43,7 +43,7 @@ const SingleProduct = ({
             <Rating ratings={rating} text={rating + " stars"} />
           </SingleProductRating>
           <SingleProductReviews>
-            {ratingCount} ratings | {reviews} reviews
+            {ratingCount} ratings | {reviews.length} reviews
           </SingleProductReviews>
         </SingleProductRatings>
         <SingleProductDescription>{description}</SingleProductDescription>
@@ -54,7 +54,9 @@ const SingleProduct = ({
           </SingleProductPrice>
           <SingleProductStatus>
             <SingleProductStatusHeading>Status</SingleProductStatusHeading>
-            <SingleProductStatusValue>{status}</SingleProductStatusValue>
+            <SingleProductStatusValue>
+              {countInStock === 0 ? "Out of stock" : "In stock"}
+            </SingleProductStatusValue>
           </SingleProductStatus>
         </SingleProductPriceContainer>
       </SingleProductDetailsContainer>

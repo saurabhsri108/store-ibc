@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 import Product from "../components/Product/Product.component"
 import Filters from "../components/Product/Filters/Filters.component"
 import Loader from "../components/Loading/Loading.component"
@@ -15,31 +14,26 @@ import {
 } from "../components/Product/Product.styles"
 import { FaFilter, FaSort } from "react-icons/fa"
 import { prices, ratings, availability, assured, brands } from "../data"
+import { useDispatch, useSelector } from "react-redux"
+import { getProductsList } from "../redux/action-creators/product-action-creator"
+import Message from "../components/Messages/Message.component"
+import { getCategoriesList } from "../redux/action-creators/category-action-creator"
 
 const Products = ({ history, location, match }) => {
-  const [products, setProducts] = useState([])
-  const [categories, setCategories] = useState([])
+  const dispatch = useDispatch()
+  const { loadingProducts, products, errorProducts } = useSelector(
+    (state) => state.productsList
+  )
+  const { loadingCategories, categories, errorCategories } = useSelector(
+    (state) => state.categoriesList
+  )
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [isSortOpen, setIsSortOpen] = useState(false)
 
   useEffect(() => {
-    const getProducts = async () => {
-      const { status, data } = await axios.get(
-        "https://fakestoreapi.com/products"
-      )
-      if (status === 200) setProducts((prevProducts) => (prevProducts = data))
-    }
-    const getCategories = async () => {
-      const { status, data } = await axios.get(
-        "https://fakestoreapi.com/products/categories"
-      )
-      if (status === 200)
-        setCategories((prevCategories) => (prevCategories = data))
-    }
-    getProducts()
-    getCategories()
-    return null
-  }, [])
+    dispatch(getProductsList())
+    dispatch(getCategoriesList())
+  }, [dispatch])
 
   const toggleFilterHandler = () => {
     setIsFilterOpen((prevStatus) => !prevStatus)
@@ -49,8 +43,10 @@ const Products = ({ history, location, match }) => {
     setIsSortOpen((prevStatus) => !prevStatus)
   }
 
-  if (products.length === 0) return <Loader />
-
+  if (loadingProducts || loadingCategories) return <Loader />
+  if (errorProducts) return <Message variant="error">{errorProducts}</Message>
+  if (errorCategories)
+    return <Message variant="error">{errorCategories}</Message>
   return (
     <>
       <ButtonActions>
@@ -78,7 +74,7 @@ const Products = ({ history, location, match }) => {
           <Sortings isSortOpen={isSortOpen} setIsSortOpen={toggleSortHandler} />
           <ProductSection>
             {products.map((product) => (
-              <Product key={product.id} {...product} />
+              <Product key={product._id} {...product} />
             ))}
           </ProductSection>
           <PaginationSection>
