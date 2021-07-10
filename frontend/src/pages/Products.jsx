@@ -73,7 +73,7 @@ const Products = ({ history, location, match }) => {
         <ListingsSection>
           <Sortings isSortOpen={isSortOpen} setIsSortOpen={toggleSortHandler} />
           <ProductSection>
-            {products.map((product) => (
+            {products?.map((product) => (
               <Product key={product._id} {...product} />
             ))}
           </ProductSection>
