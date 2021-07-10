@@ -5,11 +5,12 @@
   "description": "StoreJS API MERN Stack",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon backend/server",
+    "server": "heroku local web",
     "client": "yarn --cwd frontend start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "heroku": "node backend/server"
   },
   "repository": "https://github.com/vasudeveloper001/store-ibc.git",
   "author": "Saurabh Srivastava <vasudeveloper001@gmail.com>",
@@ -29,5 +30,8 @@
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2"
+  },
+  "engines": {
+    "node": "16.4.2"
   }
 }
