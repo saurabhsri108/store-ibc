@@ -2,8 +2,6 @@ import axios from "axios"
 import * as actions from "../actions/product-contants"
 import { API_URL } from "../../currentEnv"
 
-console.log(API_URL)
-
 export const getProductsList = () => async (dispatch) => {
   try {
     dispatch({ type: actions.PRODUCTS_LIST_REQUEST })
