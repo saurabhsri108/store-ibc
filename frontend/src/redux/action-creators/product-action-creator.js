@@ -1,10 +1,13 @@
 import axios from "axios"
 import * as actions from "../actions/product-contants"
+import { API_URL } from "../../currentEnv"
+
+console.log(API_URL)
 
 export const getProductsList = () => async (dispatch) => {
   try {
     dispatch({ type: actions.PRODUCTS_LIST_REQUEST })
-    const { data } = await axios.get("/api/v1/products")
+    const { data } = await axios.get(`${API_URL}/api/v1/products`)
     dispatch({ type: actions.PRODUCTS_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
@@ -20,7 +23,7 @@ export const getProductsList = () => async (dispatch) => {
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: actions.PRODUCT_DETAILS_REQUEST })
-    const { data } = await axios.get(`/api/v1/products/${id}`)
+    const { data } = await axios.get(`${API_URL}/api/v1/products/${id}`)
     dispatch({ type: actions.PRODUCT_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
