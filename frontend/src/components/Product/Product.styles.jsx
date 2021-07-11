@@ -3,7 +3,7 @@ import Card from "../Card/Card.component"
 import Container from "../Container/Container.component"
 import { Button } from "../FormComponents"
 
-export const ProductsContainer = styled(Container)`
+export const SContainer = styled(Container)`
   grid-template-columns: auto auto;
 `
 
@@ -13,13 +13,13 @@ export const PaginationSection = styled(Card)`
   margin-top: 2rem;
 `
 
-export const ProductSection = styled.section`
+export const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-row-gap: 2rem;
   grid-column-gap: 1rem;
 `
-export const ProductCategory = styled.span`
+export const Category = styled.span`
   position: absolute;
   right: 0;
   top: 0;
@@ -33,27 +33,27 @@ export const ProductCategory = styled.span`
   letter-spacing: 0.1rem;
   border-radius: 0 0 0 4rem;
 `
-export const ProductImageBox = styled.div``
+export const ImageBox = styled.div``
 
-export const ProductImage = styled.img`
+export const Image = styled.img`
   width: 100%;
   height: 200px;
   max-width: 150px;
   margin: 4rem auto 0;
 `
-export const ProductDetails = styled.div`
+export const Details = styled.div`
   text-align: center;
   margin: 1rem;
 `
 
-export const ProductTitle = styled.h3`
+export const Title = styled.h3`
   color: var(--color-black-70);
   font-size: var(--fs-product-title);
   line-height: 1.2;
   margin-bottom: 0.4rem;
   text-align: center;
 `
-export const ProductRatings = styled.p`
+export const Ratings = styled.p`
   display: inline-flex;
   align-items: center;
   gap: 0.1rem;
@@ -62,13 +62,13 @@ export const ProductRatings = styled.p`
   font-weight: 600;
   text-align: center;
 `
-export const ProductPrice = styled.h2`
+export const Price = styled.h2`
   font-size: var(--fs-product-price);
   font-weight: 700;
   text-align: center;
 `
 
-export const ProductDiscount = styled.p`
+export const Discount = styled.p`
   margin-bottom: 2rem;
   display: grid;
   grid-template-columns: auto auto;
@@ -80,19 +80,19 @@ export const ProductDiscount = styled.p`
   margin: 0.4rem 0 2rem;
   text-align: center;
 `
-export const ProductOriginalPrice = styled.span`
+export const OriginalPrice = styled.span`
   text-decoration: line-through;
   font-weight: 600;
   color: darkred;
   font-size: 1.2rem;
 `
-export const ProductDiscountPrice = styled.span`
+export const DiscountPrice = styled.span`
   color: darkgreen;
   font-size: 1.4rem;
   font-weight: 600;
 `
 
-export const ProductActions = styled.div`
+export const Actions = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -105,7 +105,7 @@ export const ButtonActions = styled.div`
     display: none;
   }
 `
-export const ProductButton = styled(Button)`
+export const SButton = styled(Button)`
   text-transform: uppercase;
   text-align: center;
   display: grid;

@@ -4,7 +4,7 @@ import { Button } from "../../FormComponents"
 
 export const FilterContainer = styled.aside`
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   top: 0;
   left: ${({ isFilterOpen }) => (isFilterOpen ? "0" : "-100%")};
   height: 100vh;
@@ -64,7 +64,7 @@ export const StyledFaTimes = styled(FaTimes)`
   top: 2rem;
   right: 2rem;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1;
   cursor: pointer;
 
   @media screen and (min-width: 45rem) {

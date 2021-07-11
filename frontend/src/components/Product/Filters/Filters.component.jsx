@@ -5,9 +5,6 @@ import {
   FilterButton,
 } from "./Filters.styles"
 import FilterBox from "./FilterBox.component"
-import { useSelector } from "react-redux"
-import Loader from "../../Loading/Loading.component"
-import Message from "../../Messages/Message.component"
 
 const Filters = ({
   isFilterOpen,

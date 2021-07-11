@@ -4,20 +4,14 @@ import Filters from "../components/Product/Filters/Filters.component"
 import Loader from "../components/Loading/Loading.component"
 import Paginations from "../components/Product/Paginations/Paginations.component"
 import Sortings from "../components/Product/Sortings/Sortings.component"
-import {
-  ProductsContainer,
-  ListingsSection,
-  ProductSection,
-  PaginationSection,
-  ButtonActions,
-  ProductButton,
-} from "../components/Product/Product.styles"
+import * as ProductsStyle from "../components/Product/Product.styles"
 import { FaFilter, FaSort } from "react-icons/fa"
 import { prices, ratings, availability, assured, brands } from "../data"
 import { useDispatch, useSelector } from "react-redux"
 import { getProductsList } from "../redux/action-creators/product-action-creator"
 import Message from "../components/Messages/Message.component"
 import { getCategoriesList } from "../redux/action-creators/category-action-creator"
+import { motion } from "framer-motion"
 
 const Products = ({ history, location, match }) => {
   const dispatch = useDispatch()
@@ -46,20 +40,36 @@ const Products = ({ history, location, match }) => {
   if (loadingProducts || loadingCategories) return <Loader />
   if (errorProducts) return <Message variant="error">{errorProducts}</Message>
   if (errorCategories)
-    return <Message variant="error">{errorCategories}</Message>
+    return (
+      <motion.div
+        key="home-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Message variant="error">{errorCategories}</Message>
+      </motion.div>
+    )
   return (
-    <>
-      <ButtonActions>
-        <ProductButton fs="1.2rem" sm={1} onClick={toggleFilterHandler}>
+    <motion.div
+      key="home-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <ProductsStyle.ButtonActions>
+        <ProductsStyle.SButton fs="1.2rem" sm={1} onClick={toggleFilterHandler}>
           <FaFilter />
           Filter
-        </ProductButton>
-        <ProductButton fs="1.2rem" sm={1} onClick={toggleSortHandler}>
+        </ProductsStyle.SButton>
+        <ProductsStyle.SButton fs="1.2rem" sm={1} onClick={toggleSortHandler}>
           <FaSort />
           Sort
-        </ProductButton>
-      </ButtonActions>
-      <ProductsContainer>
+        </ProductsStyle.SButton>
+      </ProductsStyle.ButtonActions>
+      <ProductsStyle.SContainer>
         <Filters
           isFilterOpen={isFilterOpen}
           setIsFilterOpen={toggleFilterHandler}
@@ -70,19 +80,19 @@ const Products = ({ history, location, match }) => {
           availability={availability}
           assured={assured}
         />
-        <ListingsSection>
+        <ProductsStyle.ListingsSection>
           <Sortings isSortOpen={isSortOpen} setIsSortOpen={toggleSortHandler} />
-          <ProductSection>
+          <ProductsStyle.Section>
             {products?.map((product) => (
               <Product key={product._id} {...product} />
             ))}
-          </ProductSection>
-          <PaginationSection>
+          </ProductsStyle.Section>
+          <ProductsStyle.PaginationSection>
             <Paginations />
-          </PaginationSection>
-        </ListingsSection>
-      </ProductsContainer>
-    </>
+          </ProductsStyle.PaginationSection>
+        </ProductsStyle.ListingsSection>
+      </ProductsStyle.SContainer>
+    </motion.div>
   )
 }
 

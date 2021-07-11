@@ -7,6 +7,7 @@ import {
   FaUserCircle,
   FaShoppingCart,
 } from "react-icons/fa"
+import { useLocation } from "react-router-dom"
 
 import {
   Overlay,
@@ -22,6 +23,7 @@ import {
 } from "./MobileOverlay.styles"
 
 const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
+  const { pathname } = useLocation()
   return (
     <Overlay
       isOverlayOpen={isOverlayOpen}
@@ -35,49 +37,90 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
         </OLoginLink>
       </OLogin>
       <StyledFaTimes />
+      {pathname === "/" && (
+        <ONav>
+          <ul>
+            <li>
+              <Scroller
+                activeClass="active"
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-94}
+                duration={600}
+                isDynamic={true}
+                onClick={overlayHandler}
+              >
+                <FaHome />
+                Home
+              </Scroller>
+            </li>
+            <li>
+              <Scroller
+                activeClass="active"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={600}
+                isDynamic={true}
+                onClick={overlayHandler}
+              >
+                <FaInfoCircle />
+                About
+              </Scroller>
+            </li>
+            <li>
+              <Scroller
+                activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={600}
+                isDynamic={true}
+                onClick={overlayHandler}
+              >
+                <FaMailBulk />
+                Contact Us
+              </Scroller>
+            </li>
+          </ul>
+        </ONav>
+      )}
       <ONav>
         <ul>
           <li>
-            <Scroller to="home" onClick={overlayHandler}>
-              <FaHome />
-              Home
-            </Scroller>
-          </li>
-          <li>
-            <Scroller to="about" onClick={overlayHandler}>
-              <FaInfoCircle />
-              About
-            </Scroller>
-          </li>
-          <li>
-            <Scroller to="contact" onClick={overlayHandler}>
-              <FaMailBulk />
-              Contact Us
-            </Scroller>
-          </li>
-        </ul>
-      </ONav>
-      <ONav>
-        <ul>
-          <li>
-            <ONavLink to="/user/orders">
+            <ONavLink
+              to="/user/orders"
+              className={pathname === "/user/orders" && "active"}
+            >
               <FaWallet />
               My Orders
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/user/cart">
+            <ONavLink
+              to="/user/cart"
+              className={pathname === "/user/cart" && "active"}
+            >
               <FaShoppingCart /> My Cart
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/user/waitlist">
+            <ONavLink
+              to="/user/waitlist"
+              className={pathname === "/user/waitlist" && "active"}
+            >
               <FaHeart />
               My Wishlist
             </ONavLink>
           </li>
           <li>
-            <ONavLink to="/user/account">
+            <ONavLink
+              to="/user/account"
+              className={pathname === "/user/account" && "active"}
+            >
               <FaUserCircle />
               My Account
             </ONavLink>

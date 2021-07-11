@@ -8,13 +8,10 @@ export const LoginNav = styled.nav`
   left: -4.2rem;
   top: 6.125rem;
   background: var(--color-black-100);
-  z-index: 10;
-  transition: all 0.3s ease-in-out;
-
-  display: none;
+  z-index: 1;
 
   @media screen and (min-width: 60rem) {
-    display: ${({ isBigLoginOpen }) => (isBigLoginOpen ? "block" : "none")};
+    display: ${({ isbigloginopen }) => (isbigloginopen ? "block" : "none")};
   }
 `
 

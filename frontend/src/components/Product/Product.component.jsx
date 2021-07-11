@@ -1,63 +1,42 @@
 import React from "react"
 import Card from "../Card/Card.component"
 import { Button } from "../FormComponents"
-import {
-  ProductCategory,
-  ProductImageBox,
-  ProductImage,
-  ProductDetails,
-  ProductTitle,
-  ProductRatings,
-  ProductPrice,
-  ProductDiscount,
-  ProductOriginalPrice,
-  ProductDiscountPrice,
-  ProductActions,
-} from "./Product.styles"
+import * as Products from "./Product.styles"
 import Rating from "./Ratings/Rating.component"
 import { FaHeart, FaCartPlus } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
-const Product = ({
-  _id,
-  title,
-  rating = 4.5,
-  ratingCount = 1000,
-  reviews = 400,
-  price,
-  discount = 40,
-  category,
-  description,
-  image,
-}) => {
-  const originalPrice = parseFloat(price + discount).toFixed(2)
+const Product = (product) => {
+  const originalPrice = parseFloat(product.price + product.discount).toFixed(2)
   return (
     <Card>
-      <ProductCategory>{category}</ProductCategory>
-      <ProductImageBox>
-        <Link to={`/products/${_id}`}>
-          <ProductImage src={image} alt={title} />
+      <Products.Category>{product.category}</Products.Category>
+      <Products.ImageBox>
+        <Link to={`/products/${product._id}`}>
+          <Products.Image src={product.image} alt={product.title} />
         </Link>
-      </ProductImageBox>
-      <ProductDetails>
-        <Link to={`/products/${_id}`}>
-          <ProductTitle>{title}</ProductTitle>
+      </Products.ImageBox>
+      <Products.Details>
+        <Link to={`/products/${product._id}`}>
+          <Products.Title>{product.title}</Products.Title>
         </Link>
-        <ProductRatings>
-          <Rating ratings={rating} text={rating + " stars"} />
-        </ProductRatings>
-        <ProductRatings>
-          {ratingCount} ratings | {reviews} reviews
-        </ProductRatings>
-      </ProductDetails>
+        <Products.Ratings>
+          <Rating ratings={product.rating} text={product.rating + " stars"} />
+        </Products.Ratings>
+        <Products.Ratings>
+          {product.ratingCount} ratings | {product.reviews} reviews
+        </Products.Ratings>
+      </Products.Details>
       <div className="price">
-        <ProductPrice>${price}</ProductPrice>
-        <ProductDiscount>
-          <ProductOriginalPrice>${originalPrice}</ProductOriginalPrice>
-          <ProductDiscountPrice>${discount} off</ProductDiscountPrice>
-        </ProductDiscount>
+        <Products.Price>${product.price}</Products.Price>
+        <Products.Discount>
+          <Products.OriginalPrice>${originalPrice}</Products.OriginalPrice>
+          <Products.DiscountPrice>
+            ${product.discount} off
+          </Products.DiscountPrice>
+        </Products.Discount>
       </div>
-      <ProductActions>
+      <Products.Actions>
         <Button fs="1.2rem" sm={1}>
           Wish
           <FaHeart />
@@ -66,7 +45,7 @@ const Product = ({
           <FaCartPlus />
           Cart
         </Button>
-      </ProductActions>
+      </Products.Actions>
     </Card>
   )
 }

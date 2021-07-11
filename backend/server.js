@@ -4,6 +4,8 @@ import cors from "cors"
 import chalk from "chalk"
 import connectDB from "./config/db.config.js"
 import productRoutes from "./routes/products.js"
+import messageRoutes from "./routes/messages.js"
+import userRoutes from "./routes/users.js"
 import { errorHandler, notFound404 } from "./middleware/error.middleware.js"
 
 dotenv.config()
@@ -18,6 +20,8 @@ app.get("/api/v1/", (req, res) => {
 })
 
 app.use("/api/v1/products", productRoutes)
+app.use("/api/v1/messages", messageRoutes)
+app.use("/api/v1/users", userRoutes)
 app.use(notFound404)
 app.use(errorHandler)
 

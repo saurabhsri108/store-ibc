@@ -68,7 +68,7 @@ export const StyledFaTimes = styled(FaTimes)`
   top: 2rem;
   right: 2rem;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1;
   cursor: pointer;
 
   @media screen and (min-width: 45rem) {
@@ -112,10 +112,18 @@ const navLinkStyles = css`
 
 export const ONavLink = styled(Link)`
   ${navLinkStyles}
+
+  &.active {
+    color: var(--color-white-100);
+  }
 `
 
 export const Scroller = styled(ScrollerLink)`
   ${navLinkStyles}
+
+  &.active {
+    color: var(--color-white-100);
+  }
 `
 
 export const Octa = styled.section`

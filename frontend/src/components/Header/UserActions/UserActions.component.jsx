@@ -1,16 +1,7 @@
 import BigLoginOverlay from "../BigLoginOverlay/BigLoginOverlay.component"
 import { FaOpencart } from "react-icons/fa"
+import * as Component from "./UserActions.styles"
 import { useState } from "react"
-import {
-  UserActionsNav,
-  UserNavlist,
-  UserCartLink,
-  UserCartNumber,
-  UserCartHeading,
-  UserLoginLink,
-  UserLoginHeading,
-  StyledFaSignInAlt,
-} from "./UserActions.styles"
 
 const UserActionsNavigation = () => {
   const [isBigLoginOpen, toggleIsBigLoginOpen] = useState(false)
@@ -18,33 +9,32 @@ const UserActionsNavigation = () => {
   const overlayLoginHandler = () => {
     toggleIsBigLoginOpen((prevIsOpen) => !prevIsOpen)
   }
-
   return (
-    <UserActionsNav>
-      <UserNavlist>
+    <Component.UserActionsNav>
+      <Component.UserNavlist>
         <li>
-          <UserCartLink to="/">
-            <UserCartNumber>0</UserCartNumber>
+          <Component.UserCartLink to="/">
+            <Component.UserCartNumber>0</Component.UserCartNumber>
             <FaOpencart />
-            <UserCartHeading>Cart</UserCartHeading>
-          </UserCartLink>
+            <Component.UserCartHeading>Cart</Component.UserCartHeading>
+          </Component.UserCartLink>
         </li>
         <li>
-          <UserLoginLink
+          <Component.UserLoginLink
             to="/auth/sign-in"
             onMouseEnter={overlayLoginHandler}
-            onMouseLeave={overlayLoginHandler}
+            onClick={overlayLoginHandler}
           >
-            <StyledFaSignInAlt />
-            <UserLoginHeading>Login</UserLoginHeading>
-          </UserLoginLink>
+            <Component.StyledFaSignInAlt />
+            <Component.UserLoginHeading>Login</Component.UserLoginHeading>
+          </Component.UserLoginLink>
           <BigLoginOverlay
             isBigLoginOpen={isBigLoginOpen}
-            toggleIsBigLoginOpen={toggleIsBigLoginOpen}
+            toggleIsBigLoginOpen={overlayLoginHandler}
           />
         </li>
-      </UserNavlist>
-    </UserActionsNav>
+      </Component.UserNavlist>
+    </Component.UserActionsNav>
   )
 }
 

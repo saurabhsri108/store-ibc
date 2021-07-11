@@ -17,6 +17,12 @@ The project is purely for learning purpose & future job application.
 - RazorPay
 - GooglePay
 
+## Deployment
+
+- Vercel - for frontend react app
+- Heroku - for backend express server
+- MongoDB Cloud Cluster - for database
+
 ## Figma Design File
 
 For Viewing [GO HERE](https://www.figma.com/file/bAO3dmZDJM2UcJUz7ezltb/E-Commerce-Store-Project?node-id=64%3A0)

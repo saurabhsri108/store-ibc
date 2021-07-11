@@ -16,7 +16,7 @@ const Error = () => {
           It seems the path you entered is wrong and you are lost! Click the
           link button below to go back to products listing
         </ErrorPara>
-        <ErrorButton>Browse Products</ErrorButton>
+        <ErrorButton to="/products">Browse Products</ErrorButton>
       </ErrorSection>
       <ErrorImage />
     </ErrorContainer>

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Container from "../../Container/Container.component"
 import { Button } from "../../FormComponents"
 
-export const SingleProductContainer = styled(Container)`
+export const SContainer = styled(Container)`
   width: 100%;
   @media screen and (min-width: 45rem) {
     grid-template-columns: auto auto;
@@ -12,25 +12,33 @@ export const SingleProductContainer = styled(Container)`
   }
 `
 
-export const SingleProductImageContainer = styled.section`
+export const ImageContainer = styled.section`
   text-align: center;
   width: 80%;
   margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
 
   @media screen and (min-width: 45rem) {
     width: 100%;
   }
 `
-export const SingleProductImage = styled.img`
-  width: 50%;
+export const Image = styled.img`
+  width: 100%;
   max-width: 280px;
 
+  &.main-img {
+    width: 70%;
+    height: 440px;
+  }
+
   @media screen and (min-width: 45rem) {
     width: 100%;
   }
 `
 
-export const SingleProductDetailsContainer = styled.section`
+export const DetailsContainer = styled.section`
   width: 80%;
   margin: auto;
   display: grid;
@@ -41,7 +49,7 @@ export const SingleProductDetailsContainer = styled.section`
     margin: 0;
   }
 `
-export const SingleProductHeading = styled.h2`
+export const Heading = styled.h2`
   color: var(--color-black-70);
   font-size: var(--fs-product-title);
   line-height: 1.2;
@@ -52,7 +60,7 @@ export const SingleProductHeading = styled.h2`
     font-size: 2.4rem;
   }
 `
-export const SingleProductRatings = styled.div`
+export const Ratings = styled.div`
   margin: 1rem 0;
   display: grid;
   gap: 0.4rem;
@@ -66,7 +74,7 @@ export const SingleProductRatings = styled.div`
     justify-items: left;
   }
 `
-export const SingleProductRating = styled.span`
+export const Rating = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 0.1rem;
@@ -75,12 +83,12 @@ export const SingleProductRating = styled.span`
   font-weight: 600;
   text-align: center;
 `
-export const SingleProductReviews = styled.span`
+export const Reviews = styled.span`
   color: var(--color-black-60);
   font-size: var(--fs-product-ratings);
   font-weight: 600;
 `
-export const SingleProductDescription = styled.p`
+export const Description = styled.p`
   text-align: center;
   font-size: var(--fs-product-description);
   color: var(--color-black-60);
@@ -92,7 +100,7 @@ export const SingleProductDescription = styled.p`
   }
 `
 
-export const SingleProductPriceContainer = styled.section`
+export const PriceContainer = styled.section`
   display: grid;
   grid-template-columns: auto auto;
   border: 1px solid var(--color-black-70);
@@ -104,12 +112,12 @@ export const SingleProductPriceContainer = styled.section`
     width: 256px;
   }
 `
-export const SingleProductPrice = styled.div`
+export const Price = styled.div`
   text-align: center;
   display: grid;
   gap: 1rem;
 `
-export const SingleProductPriceHeading = styled.h3`
+export const PriceHeading = styled.h3`
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-black-70);
@@ -118,17 +126,17 @@ export const SingleProductPriceHeading = styled.h3`
     font-size: 1.8rem;
   }
 `
-export const SingleProductPriceValue = styled.h3`
+export const PriceValue = styled.h3`
   font-size: var(--fs-product-price);
   font-weight: 600;
   color: var(--color-black-70);
 `
-export const SingleProductStatus = styled.div`
+export const Status = styled.div`
   text-align: center;
   display: grid;
   gap: 1rem;
 `
-export const SingleProductStatusHeading = styled.h3`
+export const StatusHeading = styled.h3`
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-black-70);
@@ -136,12 +144,12 @@ export const SingleProductStatusHeading = styled.h3`
     font-size: 1.8rem;
   }
 `
-export const SingleProductStatusValue = styled.h3`
+export const StatusValue = styled.h3`
   font-size: var(--fs-product-price);
   font-weight: 600;
   color: var(--color-black-70);
 `
-export const SingleProductActions = styled.div`
+export const Actions = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: sticky;
@@ -152,7 +160,7 @@ export const SingleProductActions = styled.div`
     position: static;
   }
 `
-export const SingleProductButton = styled(Button)`
+export const SButton = styled(Button)`
   text-transform: uppercase;
   text-align: center;
   display: block;
@@ -173,4 +181,20 @@ export const SingleProductButton = styled(Button)`
       background-color: hsla(0, 0%, 100%, 0.8);
     }
   }
+`
+
+export const Quantity = styled.div`
+  @media screen and (min-width: 45rem) {
+    margin: 0;
+    width: 256px;
+  }
+`
+
+export const QuantitySelect = styled.select`
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-black-60);
+  width: 100%;
+  cursor: pointer;
 `

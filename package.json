@@ -5,7 +5,7 @@
   "description": "StoreJS API MERN Stack",
   "main": "server.js",
   "scripts": {
-    "server": "heroku local web",
+    "server": "nodemon backend/server",
     "client": "yarn --cwd frontend start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder",

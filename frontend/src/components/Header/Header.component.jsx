@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom"
 
 const Header = (props) => {
   const [isOverlayOpen, toggleIsOverlayOpen] = useState(false)
+
   const { pathname } = useLocation()
 
   const overlayHandler = () => {
@@ -27,9 +28,9 @@ const Header = (props) => {
         overlayHandler={overlayHandler}
       />
       <HeaderContainer>
-        <FirstHeaderSection>
+        <FirstHeaderSection className={pathname !== "/" && "home-page"}>
           <SiteLogo overlayHandler={overlayHandler} />
-          <BigScreenNavigation />
+          {pathname === "/" && <BigScreenNavigation />}
           <BigSearchBar />
           <UserActionsNavigation />
         </FirstHeaderSection>

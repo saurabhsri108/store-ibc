@@ -3,7 +3,7 @@ import { Button } from "../../FormComponents"
 
 export const SortContainer = styled.section`
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   top: 0;
   right: ${({ isSortOpen }) => (isSortOpen ? "0" : "-100%")};
   width: 100%;

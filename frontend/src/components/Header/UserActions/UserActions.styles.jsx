@@ -69,7 +69,7 @@ export const UserLoginHeading = styled.span`
   font-weight: 700;
   font-family: "Raleway", sans-serif;
   position: relative;
-  transition: 0.5s;
+  z-index: 1;
 
   @media screen and (min-width: 45rem) {
     display: block;

@@ -6,15 +6,43 @@ const BigScreenNavigation = () => {
     <BigScreenNav>
       <BigNavlist>
         <li>
-          <Scroller to="home" className="active">
+          <Scroller
+            activeClass="active"
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-74}
+            duration={600}
+            isDynamic={true}
+          >
             Home
           </Scroller>
         </li>
         <li>
-          <Scroller to="about">About Us</Scroller>
+          <Scroller
+            activeClass="active"
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={600}
+            isDynamic={true}
+          >
+            About Us
+          </Scroller>
         </li>
         <li>
-          <Scroller to="contact">Contact Us</Scroller>
+          <Scroller
+            activeClass="active"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={600}
+            isDynamic={true}
+          >
+            Contact Us
+          </Scroller>
         </li>
       </BigNavlist>
     </BigScreenNav>

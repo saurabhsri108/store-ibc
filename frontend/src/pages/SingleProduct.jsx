@@ -5,26 +5,43 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getProductDetails } from "../redux/action-creators/product-action-creator"
 import Message from "../components/Messages/Message.component"
+import { motion } from "framer-motion"
 
 const SingleProduct = ({ history, location, match }) => {
   const dispatch = useDispatch()
   const { loadingProduct, product, errorProduct } = useSelector(
     (state) => state.productDetails
   )
-
   useEffect(() => {
     dispatch(getProductDetails(match.params.id))
-  }, [dispatch, match.params.id])
+  }, [dispatch, match])
 
   if (loadingProduct) return <Loader />
 
-  if (errorProduct) return <Message variant="error">{errorProduct}</Message>
+  if (errorProduct)
+    return (
+      <motion.div
+        key="home-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Message variant="error">{errorProduct}</Message>
+      </motion.div>
+    )
 
   return (
-    <>
-      <SingleProductSection {...product} />
+    <motion.div
+      key="home-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <SingleProductSection product={product} />
       <ReviewProductSection />
-    </>
+    </motion.div>
   )
 }
 
