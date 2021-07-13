@@ -56,13 +56,13 @@ const CartItems = ({ items, isSavedProduct }) => {
     history.push("/auth/sign-in?redirect=shipping")
   }
 
-  const totalPrice = items
-    ?.reduce((total, item) => total + item.price * item.qty, 0)
-    .toFixed(2)
-  const deliveryPrice = totalPrice > 40 ? "FREE" : 40
+  const totalPrice = Number(
+    items?.reduce((total, item) => total + item.price * item.qty, 0).toFixed(2)
+  )
+  let deliveryPrice = totalPrice > 40 ? "FREE" : 10
   const finalPrice =
     typeof deliveryPrice === "number" ? totalPrice + deliveryPrice : totalPrice
-
+  deliveryPrice = "$10"
   return (
     <>
       <div>
