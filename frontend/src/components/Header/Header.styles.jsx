@@ -2,9 +2,12 @@ import styled from "styled-components"
 import { Link as ScrollerLink } from "react-scroll"
 
 export const MainHeader = styled.header`
-  position: ${({ pathname }) => (pathname === "/" ? "sticky" : "")};
-  top: ${({ pathname }) => (pathname === "/" ? "0" : "")};
-  z-index: ${({ pathname }) => (pathname === "/" ? "1" : "")};
+  position: ${({ pathname }) =>
+    pathname === "/" || pathname === "/products" ? "sticky" : ""};
+  top: ${({ pathname }) =>
+    pathname === "/" || pathname === "/products" ? "0" : ""};
+  z-index: ${({ pathname }) =>
+    pathname === "/" || pathname === "/products" ? "1" : ""};
   background-color: var(--color-black-100);
   padding: 1.2rem 0;
 `

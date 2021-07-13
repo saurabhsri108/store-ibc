@@ -18,10 +18,12 @@ export const ImageContainer = styled.section`
   margin: auto;
   display: flex;
   justify-content: space-evenly;
-  align-items: flex-end;
+  align-items: center;
+  gap: 1rem;
 
   @media screen and (min-width: 45rem) {
     width: 100%;
+    align-items: center;
   }
 `
 export const Image = styled.img`

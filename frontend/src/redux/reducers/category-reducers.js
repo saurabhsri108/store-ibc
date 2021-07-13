@@ -5,10 +5,9 @@ export const categoriesListReducer = (state = { categories: [] }, action) => {
     case actions.CATEGORIES_LIST_REQUEST:
       return { loadingCategories: true, categories: [] }
     case actions.CATEGORIES_LIST_SUCCESS:
-      console.log(action.payload)
       return { loadingCategories: false, categories: action.payload }
     case actions.CATEGORIES_LIST_FAIL:
-      return { loadingCategories: false, error: action.payload }
+      return { loadingCategories: false, errorCategories: action.payload }
     default:
       return state
   }

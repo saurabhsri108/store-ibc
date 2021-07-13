@@ -1,31 +1,32 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { addToCart } from "../../../redux/action-creators/cart-action-creator"
 import Slides from "../../Slides/Slides.component"
 import Rating from "../Ratings/Rating.component"
 import * as SingleProductStyle from "./SingleProduct.styles"
 
 const SingleProduct = ({ product }) => {
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   const qtyChangeHandler = (e) => {
     e.preventDefault()
     setQty(e.target.value)
   }
 
-  product.images = [
-    { id: 1, image: product.image, alt: product.title },
-    { id: 2, image: product.image, alt: product.title },
-    { id: 3, image: product.image, alt: product.title },
-    { id: 4, image: product.image, alt: product.title },
-    {
-      id: 5,
-      image:
-        "https://images.unsplash.com/photo-1625863057797-015fef6be7ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80",
-      alt: product.title,
-    },
-  ]
+  const addToCartHandler = () => {
+    dispatch(addToCart(product, qty))
+    history.push(`/cart`)
+  }
+
+  const buyNowHandler = () => {
+    history.push(`/checkout/${product._id}?qty=${qty}`)
+  }
   return (
     <SingleProductStyle.SContainer>
-      <Slides images={product.images} />
+      {product.images.length !== 0 && <Slides images={product.images} />}
       <SingleProductStyle.DetailsContainer>
         <SingleProductStyle.Heading>{product.title}</SingleProductStyle.Heading>
         <SingleProductStyle.Ratings>
@@ -76,10 +77,14 @@ const SingleProduct = ({ product }) => {
         </SingleProductStyle.PriceContainer>
       </SingleProductStyle.DetailsContainer>
       <SingleProductStyle.Actions>
-        <SingleProductStyle.SButton fs="1.2rem" sm={1}>
+        <SingleProductStyle.SButton fs="1.2rem" sm={1} onClick={buyNowHandler}>
           Buy Now
         </SingleProductStyle.SButton>
-        <SingleProductStyle.SButton fs="1.2rem" sm={1}>
+        <SingleProductStyle.SButton
+          fs="1.2rem"
+          sm={1}
+          onClick={addToCartHandler}
+        >
           Add to Cart
         </SingleProductStyle.SButton>
       </SingleProductStyle.Actions>

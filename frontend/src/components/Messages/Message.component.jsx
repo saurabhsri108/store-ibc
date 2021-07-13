@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import { motion } from "framer-motion"
 
 const StyledMessage = styled.div`
-  width: ${({ width }) => width};
-  margin: ${({ margin }) => margin};
+  width: ${({ width }) => width || "80%"};
+  margin: ${({ margin }) => margin || "2rem 0"};
   padding: 2rem;
   max-width: 1080px;
   font-size: 1.4rem;
@@ -21,17 +20,12 @@ const StyledMessage = styled.div`
   color: ${({ variant }) => variant === "success" && "darkgreen"};
 `
 
-const Message = ({ variant, children, animateit, initial }) => {
+const Message = ({ variant, children, ...otherProps }) => {
   return (
-    <motion.div initial={initial} animate={animateit}>
-      <StyledMessage variant={variant}>{children}</StyledMessage>
-    </motion.div>
+    <StyledMessage variant={variant} {...otherProps}>
+      {children}
+    </StyledMessage>
   )
-}
-
-Message.defaultProps = {
-  width: "80%",
-  margin: "2rem auto",
 }
 
 export default Message

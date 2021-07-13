@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../../helpers/axios"
 import * as actions from "../actions/category-constants"
 
 export const getCategoriesList = () => async (dispatch) => {

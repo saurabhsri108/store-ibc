@@ -83,3 +83,21 @@ export const StyledFaSignInAlt = styled(FaSignInAlt)`
     display: none;
   }
 `
+
+/** Logged in showcase */
+
+export const UserImage = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+`
+export const Username = styled.span`
+  font-family: "Raleway", sans-serif;
+  display: none;
+
+  @media screen and (min-width: 45rem) {
+    display: block;
+    color: var(--color-white-100);
+    margin-left: 0.2rem;
+  }
+`

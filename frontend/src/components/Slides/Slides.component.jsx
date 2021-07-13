@@ -11,11 +11,12 @@ const StyledSlides = styled.div`
 
   img {
     cursor: pointer;
+    min-width: 4.8rem;
     border: 1px solid var(--color-black-10);
     border-radius: 0.2rem;
     padding: 0.4rem;
-    opacity: ${({ active }) => (active ? "1" : "0.3")};
-    transition: opacity 300ms ease-in-out;
+    opacity: 0.3;
+    transition: opacity 300ms ease;
 
     &:hover,
     &:focus,
@@ -23,11 +24,15 @@ const StyledSlides = styled.div`
       opacity: 1;
       box-shadow: 1px 1px 4px black;
     }
+
+    &.active {
+      opacity: 1;
+    }
   }
 `
 
 const Slides = ({ images, children }) => {
-  const [chosenImageId, setChosenImageId] = useState(images[0].id)
+  const [chosenImageId, setChosenImageId] = useState(images[0]._id)
 
   const chooseImage = (id) => {
     setChosenImageId(id)
@@ -36,20 +41,20 @@ const Slides = ({ images, children }) => {
   return (
     <SingleProductStyle.ImageContainer>
       <StyledSlides>
-        {images.map((image) => (
+        {images?.map((image) => (
           <SingleProductStyle.Image
-            key={image.id}
+            key={image._id}
             src={image.image}
-            alt={image.title}
-            active={chosenImageId === image.id ? true : false}
-            onMouseOver={() => chooseImage(image.id)}
-            onClick={() => chooseImage(image.id)}
+            alt={image.alt}
+            className={chosenImageId === image._id ? "active" : ""}
+            onMouseOver={() => chooseImage(image._id)}
+            onClick={() => chooseImage(image._id)}
           />
         ))}
       </StyledSlides>
       <SingleProductStyle.Image
-        src={images[chosenImageId - 1].image}
-        alt={images[chosenImageId - 1].title}
+        src={images.find((i) => i._id === chosenImageId).image}
+        alt={images.find((i) => i._id === chosenImageId).alt}
       />
     </SingleProductStyle.ImageContainer>
   )

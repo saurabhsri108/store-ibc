@@ -1,4 +1,3 @@
-import mongoose from "mongoose"
 import dotenv from "dotenv"
 import chalk from "chalk"
 import users from "./data/users.seeder.js"
@@ -7,6 +6,8 @@ import User from "./schema/user.schema.js"
 import Product from "./schema/product.schema.js"
 import Message from "./schema/message.schema.js"
 import Order from "./schema/order.schema.js"
+import Images from "./schema/images.schema.js"
+import Reviews from "./schema/review.schema.js"
 import connectDB from "./config/db.config.js"
 
 dotenv.config()
@@ -17,6 +18,8 @@ const importData = async () => {
   try {
     await User.deleteMany()
     await Product.deleteMany()
+    await Images.deleteMany()
+    await Reviews.deleteMany()
     await Order.deleteMany()
     await Message.deleteMany()
 
@@ -39,8 +42,10 @@ const importData = async () => {
 const destroyData = async () => {
   try {
     await User.deleteMany()
-    await Order.deleteMany()
     await Product.deleteMany()
+    await Images.deleteMany()
+    await Reviews.deleteMany()
+    await Order.deleteMany()
     await Message.deleteMany()
 
     console.log(chalk.green.bold("Data destroyed successfully..."))

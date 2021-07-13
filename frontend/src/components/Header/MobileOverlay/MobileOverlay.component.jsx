@@ -7,7 +7,9 @@ import {
   FaUserCircle,
   FaShoppingCart,
 } from "react-icons/fa"
-import { useLocation } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory, useLocation } from "react-router-dom"
+import { userLogout } from "../../../redux/action-creators/user-action-creator"
 
 import {
   Overlay,
@@ -24,6 +26,14 @@ import {
 
 const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
   const { pathname } = useLocation()
+  const { userInfo } = useSelector((state) => state.userLogin)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const logoutHandler = () => {
+    dispatch(userLogout())
+    overlayHandler()
+    history.push("/auth/sign-in")
+  }
   return (
     <Overlay
       isOverlayOpen={isOverlayOpen}
@@ -31,10 +41,20 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
       onClick={overlayHandler}
     >
       <OLogin>
-        <OLoginLink to="/auth/sign-in" onClick={overlayHandler}>
-          <FaUserCircle onClick={overlayHandler} />
-          <OLoginPara onClick={overlayHandler}>Login &amp; Signup</OLoginPara>
-        </OLoginLink>
+        {!userInfo && (
+          <OLoginLink to="/auth/sign-in" onClick={overlayHandler}>
+            <FaUserCircle onClick={overlayHandler} />
+            <OLoginPara onClick={overlayHandler}>
+              Login &amp; Register
+            </OLoginPara>
+          </OLoginLink>
+        )}
+        {userInfo && (
+          <OLoginLink to="/" onClick={logoutHandler}>
+            <FaUserCircle onClick={overlayHandler} />
+            <OLoginPara onClick={overlayHandler}>Logout</OLoginPara>
+          </OLoginLink>
+        )}
       </OLogin>
       <StyledFaTimes />
       {pathname === "/" && (

@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react"
+
 import Product from "../components/Product/Product.component"
 import Filters from "../components/Product/Filters/Filters.component"
 import Loader from "../components/Loading/Loading.component"
 import Paginations from "../components/Product/Paginations/Paginations.component"
+import Message from "../components/Messages/Message.component"
 import Sortings from "../components/Product/Sortings/Sortings.component"
+
 import * as ProductsStyle from "../components/Product/Product.styles"
 import { FaFilter, FaSort } from "react-icons/fa"
+
 import { prices, ratings, availability, assured, brands } from "../data"
+
 import { useDispatch, useSelector } from "react-redux"
 import { getProductsList } from "../redux/action-creators/product-action-creator"
-import Message from "../components/Messages/Message.component"
 import { getCategoriesList } from "../redux/action-creators/category-action-creator"
-import { motion } from "framer-motion"
 
 const Products = ({ history, location, match }) => {
   const dispatch = useDispatch()
@@ -40,25 +43,9 @@ const Products = ({ history, location, match }) => {
   if (loadingProducts || loadingCategories) return <Loader />
   if (errorProducts) return <Message variant="error">{errorProducts}</Message>
   if (errorCategories)
-    return (
-      <motion.div
-        key="home-page"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <Message variant="error">{errorCategories}</Message>
-      </motion.div>
-    )
+    return <Message variant="error">{errorCategories}</Message>
   return (
-    <motion.div
-      key="home-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
+    <>
       <ProductsStyle.ButtonActions>
         <ProductsStyle.SButton fs="1.2rem" sm={1} onClick={toggleFilterHandler}>
           <FaFilter />
@@ -92,7 +79,7 @@ const Products = ({ history, location, match }) => {
           </ProductsStyle.PaginationSection>
         </ProductsStyle.ListingsSection>
       </ProductsStyle.SContainer>
-    </motion.div>
+    </>
   )
 }
 

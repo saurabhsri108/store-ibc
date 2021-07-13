@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import reviewSchema from "./review.schema.js"
+import imagesSchema from "./images.schema.js"
 
 const productSchema = mongoose.Schema(
   {
@@ -17,10 +18,7 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: true,
-    },
+    images: [imagesSchema],
     category: {
       type: String,
       required: true,

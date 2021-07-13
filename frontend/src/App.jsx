@@ -6,22 +6,21 @@ import Products from "./pages/Products.jsx"
 import Error404 from "./pages/Error404.jsx"
 import Footer from "./components/Footer/Footer.component.jsx"
 import SingleProduct from "./pages/SingleProduct.jsx"
-import { AnimatePresence } from "framer-motion"
+import Cart from "./pages/Cart.jsx"
 
 const App = () => {
   const location = useLocation()
   return (
     <>
       <Header />
-      <AnimatePresence exitBeforeEnter>
-        <Switch location={location} key={location.pathname}>
-          <Route path="/" exact component={Home} />
-          <Route path="/auth/:option" exact component={Auth} />
-          <Route path="/products/" exact component={Products} />
-          <Route path="/products/:id" exact component={SingleProduct} />
-          <Route path="*" component={Error404} />
-        </Switch>
-      </AnimatePresence>
+      <Switch location={location} key={location.pathname}>
+        <Route path="/" exact component={Home} />
+        <Route path="/auth/:option" exact component={Auth} />
+        <Route path="/products/" exact component={Products} />
+        <Route path="/products/:id" exact component={SingleProduct} />
+        <Route path="/cart" exact component={Cart} />
+        <Route path="*" component={Error404} />
+      </Switch>
       <Footer />
     </>
   )

@@ -1,72 +1,102 @@
-import {
-  Button,
-  InputField,
-  InputGroup,
-  Label,
-  InputCheckbox,
-} from "../../FormComponents"
-import {
-  AuthForm,
-  AuthContainer,
-  SignInImage,
-  AuthLinks,
-} from "../AuthForm.styles"
+import * as Form from "../../FormComponents"
+import * as Component from "../AuthForm.styles"
+import Loader from "../../Loading/Loading.component"
+import Message from "../../Messages/Message.component"
 import { FaGooglePlusSquare, FaSignInAlt } from "react-icons/fa"
 import { GoogleLogin } from "react-google-login"
+import { useEffect, useState } from "react"
+import { userLogin } from "../../../redux/action-creators/user-action-creator"
+import { useDispatch, useSelector } from "react-redux"
 
-const SignInForm = () => {
-  const responseGoogle = (response) => {
-    if (response.error) {
-      console.error("Login screen closed by the user")
-      return
+const SignInForm = ({ history, location }) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [remember, setRemember] = useState(false)
+
+  const dispatch = useDispatch()
+  const { loadingUser, userInfo, error } = useSelector(
+    (state) => state.userLogin
+  )
+
+  const redirect = location.search ? location.search.split("=")[1] : "/"
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect)
     }
-    const { profileObj, tokenId } = response
-    const { email, imageUrl, name, givenName, familyName } = profileObj
+  }, [history, redirect, userInfo])
 
-    localStorage.setItem("profile", JSON.stringify(profileObj))
+  const googleSuccessHandler = async (res) => {
+    const { googleId, email } = res.profileObj
+    dispatch(userLogin(email, googleId))
   }
+
+  const googleFailureHandler = () => {
+    alert("Google Sign In Failed. Try again!")
+  }
+
+  const signInHandler = (e) => {
+    e.preventDefault()
+    dispatch(userLogin(email, password))
+  }
+
   return (
-    <AuthContainer>
-      <AuthForm>
+    <Component.AuthContainer>
+      <Component.AuthForm onSubmit={signInHandler}>
         <h1 style={{ marginTop: 0 }}>Welcome Back!</h1>
-        <InputGroup>
-          <Label htmlFor="email">Email</Label>
-          <InputField
+        {loadingUser && <Loader />}
+        {error && (
+          <Message variant="error" width="100%" margin="0">
+            {error}
+          </Message>
+        )}
+        <Form.InputGroup>
+          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.InputField
             type="email"
             id="email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="johndoe@example.com"
             required
           />
-        </InputGroup>
-        <InputGroup>
-          <Label htmlFor="password">Password</Label>
-          <InputField
+        </Form.InputGroup>
+        <Form.InputGroup>
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.InputField
             type="password"
             name="password"
             id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="********"
-            min="8"
+            minLength="6"
             autoComplete="on"
             required
           />
-        </InputGroup>
-        <InputGroup>
-          <InputCheckbox name="remember_me" id="remember-me">
+        </Form.InputGroup>
+        <Form.InputGroup>
+          <Form.InputCheckbox
+            name="remember_me"
+            id="remember-me"
+            value={remember}
+            onChange={() => setRemember((prevRemember) => !prevRemember)}
+          >
             Remember Me
-          </InputCheckbox>
-        </InputGroup>
-        <InputGroup>
-          <Button type="submit" style={{ marginTop: "2rem" }}>
+          </Form.InputCheckbox>
+        </Form.InputGroup>
+        <Form.InputGroup>
+          <Form.Button type="submit" style={{ marginTop: "2rem" }}>
             <FaSignInAlt />
             Sign In
-          </Button>
-        </InputGroup>
-        <InputGroup>
+          </Form.Button>
+        </Form.InputGroup>
+        <Form.InputGroup>
           <GoogleLogin
             clientId="737658306511-oi1irevlsosf3utuvcnc5diu8rrpbhe2.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button
+              <Form.Button
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 bg="var(--color-google-signin-100)"
@@ -74,21 +104,29 @@ const SignInForm = () => {
               >
                 <FaGooglePlusSquare />
                 Sign in with Google
-              </Button>
+              </Form.Button>
             )}
             buttonText="Sign In Using Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={googleSuccessHandler}
+            onFailure={googleFailureHandler}
             cookiePolicy={"single_host_origin"}
           />
-        </InputGroup>
-        <InputGroup>
-          <AuthLinks to="/auth/forgot-password">Forgot Password?</AuthLinks>
-          <AuthLinks to="/auth/sign-up">New member? Register here</AuthLinks>
-        </InputGroup>
-      </AuthForm>
-      <SignInImage />
-    </AuthContainer>
+        </Form.InputGroup>
+        <Form.InputGroup>
+          <Component.AuthLinks to="/auth/forgot-password">
+            Forgot Password?
+          </Component.AuthLinks>
+          <Component.AuthLinks
+            to={
+              redirect ? `/auth/sign-up?redirect=${redirect}` : "/auth/sign-up"
+            }
+          >
+            New member? Register here
+          </Component.AuthLinks>
+        </Form.InputGroup>
+      </Component.AuthForm>
+      <Component.SignInImage />
+    </Component.AuthContainer>
   )
 }
 

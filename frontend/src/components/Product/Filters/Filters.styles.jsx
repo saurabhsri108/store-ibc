@@ -17,6 +17,7 @@ export const FilterContainer = styled.aside`
 
   @media screen and (min-width: 45rem) {
     width: 50%;
+    z-index: 0;
   }
 
   @media screen and (min-width: 60rem) {

@@ -8,18 +8,36 @@ import generateToken from "../utils/generatejwt.js"
  * @access  Admin || Public
  */
 export const addUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body
+  const { username, email, password, imageUrl, name, givenName, familyName } =
+    req.body
   const userExists = await User.findOne({ email })
   if (userExists) {
     res.status(400)
     throw new Error("User already exists")
   }
-  const user = await User.create({ username, email, password })
+  const usernameExists = await User.findOne({ username })
+  if (usernameExists) {
+    res.status(400)
+    throw new Error("Username already taken")
+  }
+  const user = await User.create({
+    username,
+    email,
+    password,
+    imageUrl,
+    name,
+    givenName,
+    familyName,
+  })
   if (user) {
     res.status(201).json({
       id: user._id,
+      username: user.username,
       name: user.name,
       email: user.email,
+      image: user.imageUrl,
+      givenName: user.givenName,
+      familyName: user.familyName,
       isAdmin: user.isAdmin,
       message: "Registration successful",
     })
@@ -49,8 +67,12 @@ export const authUser = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     res.status(200).json({
       id: user._id,
+      username: user.username,
       name: user.name,
       email: user.email,
+      image: user.imageUrl,
+      givenName: user.givenName,
+      familyName: user.familyName,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
