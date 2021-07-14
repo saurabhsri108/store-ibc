@@ -18,8 +18,6 @@ const importData = async () => {
   try {
     await User.deleteMany()
     await Product.deleteMany()
-    await Images.deleteMany()
-    await Reviews.deleteMany()
     await Order.deleteMany()
     await Message.deleteMany()
 
@@ -43,8 +41,6 @@ const destroyData = async () => {
   try {
     await User.deleteMany()
     await Product.deleteMany()
-    await Images.deleteMany()
-    await Reviews.deleteMany()
     await Order.deleteMany()
     await Message.deleteMany()
 

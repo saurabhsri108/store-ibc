@@ -22,6 +22,7 @@ import {
 } from "./Cart.styles"
 import { useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
+import { gettotalPrices } from "../../helpers/getotalPrices"
 
 const CartItems = ({ items, isSavedProduct }) => {
   const dispatch = useDispatch()
@@ -59,10 +60,9 @@ const CartItems = ({ items, isSavedProduct }) => {
   const totalPrice = Number(
     items?.reduce((total, item) => total + item.price * item.qty, 0).toFixed(2)
   )
-  let deliveryPrice = totalPrice > 40 ? "FREE" : 10
-  const finalPrice =
-    typeof deliveryPrice === "number" ? totalPrice + deliveryPrice : totalPrice
-  deliveryPrice = "$10"
+
+  const [deliveryPrice, finalPrice] = gettotalPrices(totalPrice)
+
   return (
     <>
       <div>
