@@ -33,3 +33,5 @@ app.listen(
     )
   )
 )
+
+process.on("SIGINT", () => process.exit(1))

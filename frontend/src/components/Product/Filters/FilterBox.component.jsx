@@ -22,7 +22,11 @@ const FilterBox = ({ options, heading }) => {
               marginBottom: "0.4rem",
             }}
           >
-            <InputCheckbox name={modifiedOption} id={modifiedOption}>
+            <InputCheckbox
+              name={modifiedOption}
+              id={modifiedOption}
+              value={option}
+            >
               {textOption}
             </InputCheckbox>
           </InputGroup>

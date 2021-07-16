@@ -6,8 +6,6 @@ import User from "./schema/user.schema.js"
 import Product from "./schema/product.schema.js"
 import Message from "./schema/message.schema.js"
 import Order from "./schema/order.schema.js"
-import Images from "./schema/images.schema.js"
-import Reviews from "./schema/review.schema.js"
 import connectDB from "./config/db.config.js"
 
 dotenv.config()

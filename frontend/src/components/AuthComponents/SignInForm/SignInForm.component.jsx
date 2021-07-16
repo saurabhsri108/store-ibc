@@ -87,12 +87,13 @@ const SignInForm = ({ history, location }) => {
           </Form.InputCheckbox>
         </Form.InputGroup>
         <Form.InputGroup>
-          <Form.Button type="submit" style={{ marginTop: "2rem" }}>
+          <Form.Button
+            type="submit"
+            style={{ marginTop: "2rem", marginRight: "1rem" }}
+          >
             <FaSignInAlt />
             Sign In
           </Form.Button>
-        </Form.InputGroup>
-        <Form.InputGroup>
           <GoogleLogin
             clientId="737658306511-oi1irevlsosf3utuvcnc5diu8rrpbhe2.apps.googleusercontent.com"
             render={(renderProps) => (
@@ -101,6 +102,7 @@ const SignInForm = ({ history, location }) => {
                 disabled={renderProps.disabled}
                 bg="var(--color-google-signin-100)"
                 bgh="var(--color-google-signin-90)"
+                style={{ marginTop: "1rem" }}
               >
                 <FaGooglePlusSquare />
                 Sign in with Google
@@ -125,7 +127,40 @@ const SignInForm = ({ history, location }) => {
           </Component.AuthLinks>
         </Form.InputGroup>
       </Component.AuthForm>
-      <Component.SignInImage />
+      <div>
+        <Component.SignInImage />
+        <Form.InputGroup>
+          <Form.Button
+            bg="var(--color-white-100)"
+            bgh="hsla(0, 0%, 90%, 0.8)"
+            color="var(--color-black-70)"
+            style={{
+              marginTop: "1rem",
+              marginRight: "1rem",
+              border: "1px solid var(--color-black-70)",
+            }}
+            onClick={() => dispatch(userLogin("user001@storejs.com", "123456"))}
+          >
+            <FaSignInAlt />
+            Dummy User Login
+          </Form.Button>
+          <Form.Button
+            bg="var(--color-white-100)"
+            bgh="hsla(0, 0%, 90%, 0.8)"
+            color="var(--color-black-70)"
+            style={{
+              marginTop: "1rem",
+              border: "1px solid var(--color-black-70)",
+            }}
+            onClick={() =>
+              dispatch(userLogin("admin001@storejs.com", "123456"))
+            }
+          >
+            <FaSignInAlt />
+            Dummy Admin Login
+          </Form.Button>
+        </Form.InputGroup>
+      </div>
     </Component.AuthContainer>
   )
 }
