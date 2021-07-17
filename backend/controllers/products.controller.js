@@ -3,7 +3,7 @@ import Product from "../schema/product.schema.js"
 
 /**
  * @desc      Fetch all products
- * @route     GET /api/products
+ * @route     GET /api/v1/products
  * @access    Public
  */
 export const fetchProducts = asyncHandler(async (req, res) => {
@@ -13,12 +13,12 @@ export const fetchProducts = asyncHandler(async (req, res) => {
 
 /**
  * @desc      Fetch single products
- * @route     GET /api/products/:id
+ * @route     GET /api/v1/products/:id
  * @access    Public
  */
 export const fetchSingleProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
-  if (product) res.json(product)
+  if (product) res.status(200).json(product)
   else {
     res.status(404)
     throw new Error("Product not found")
@@ -27,7 +27,7 @@ export const fetchSingleProduct = asyncHandler(async (req, res) => {
 
 /**
  * @desc      Add a new product
- * @route     GET /api/products
+ * @route     POST /api/v1/products
  * @access    Admin
  */
 export const addNewProduct = asyncHandler(async (req, res) => {
@@ -40,22 +40,29 @@ export const addNewProduct = asyncHandler(async (req, res) => {
 
 /**
  * @desc      Update a product
- * @route     GET /api/products/:id
+ * @route     PUT /api/v1/products/:id
  * @access    Admin
  */
-export const updateProduct = (req, res) => {
-  console.log(req.params.id)
-}
+export const updateProduct = asyncHandler(async (req, res) => {
+  const storedProduct = await Product.findOne({ _id: req.params.id })
+  for (let option in req.body) {
+    storedProduct[option] = req.body[option]
+  }
+  res.status(201).json({
+    storedProduct,
+    message: "Product updated successfully",
+  })
+})
 
 /**
  * @desc      Delete a product
- * @route     GET /api/products/:id
+ * @route     DELETE /api/v1/products/:id
  * @access    Admin
  */
 export const deleteProduct = asyncHandler(async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id)
-  res.status(201).json({
-    deletedProduct: deletedProduct,
+  res.status(200).json({
+    deletedProduct,
     message: "Product deleted successfully",
   })
 })

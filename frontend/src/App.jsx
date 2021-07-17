@@ -7,6 +7,7 @@ import Error404 from "./pages/Error404.jsx"
 import Footer from "./components/Footer/Footer.component.jsx"
 import SingleProduct from "./pages/SingleProduct.jsx"
 import Cart from "./pages/Cart.jsx"
+import Account from "./pages/Account.jsx"
 
 const App = () => {
   const location = useLocation()
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/products/" exact component={Products} />
         <Route path="/products/:id" exact component={SingleProduct} />
         <Route path="/cart" exact component={Cart} />
+        <Route path="/user/:id?" component={Account} />
         <Route path="*" component={Error404} />
       </Switch>
       <Footer />

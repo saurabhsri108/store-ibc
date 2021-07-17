@@ -83,28 +83,58 @@ export const authUser = asyncHandler(async (req, res) => {
 })
 
 /**
- * @desc    Update existing user
- * @route   POST /api/v1/users/update
- * @access  Admin || Private
- */
-export const updateUser = asyncHandler(async (req, res) => {})
-
-/**
- * @desc    Reset User password
- * @route   POST /api/v1/users/reset
- * @access  Private
- */
-export const resetPasswordUser = asyncHandler(async (req, res) => {})
-
-/**
  * @desc    Get User Data after login
  * @route   GET /api/v1/users/profile
  * @access  Private
  */
 export const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select("-password")
+
   if (user) {
-    res.status(200).json({ user })
+    res.status(200).json({
+      id: user._id,
+      username: user.username,
+      name: user.name,
+      email: user.email,
+      image: user.imageUrl,
+      givenName: user.givenName,
+      familyName: user.familyName,
+      isAdmin: user.isAdmin,
+    })
+  } else {
+    res.status(404)
+    throw new Error("User not found")
+  }
+})
+
+/**
+ * @desc    Update existing user
+ * @route   PUT /api/v1/users/profile
+ * @access  Admin || Private
+ */
+export const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ _id: req.body.id })
+  if (user) {
+    user.username = req.body.username || user.username
+    user.name = req.body.name || user.name
+    user.givenName = req.body.name?.split(" ")[0] || user.givenName
+    user.familyName = req.body.name?.split(" ")[1] || user.familyName
+    user.email = req.body.email || user.email
+    user.image = req.body.image || user.image
+    user.password = req.body.password || user.password
+
+    const updatedUser = await user.save()
+
+    res.status(200).json({
+      id: updatedUser._id,
+      username: updatedUser.username,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      image: updatedUser.imageUrl,
+      givenName: updatedUser.givenName,
+      familyName: updatedUser.familyName,
+      isAdmin: updatedUser.isAdmin,
+    })
   } else {
     res.status(404)
     throw new Error("User not found")

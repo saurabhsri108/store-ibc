@@ -24,7 +24,6 @@ app.use("/api/v1/messages", messageRoutes)
 app.use("/api/v1/users", userRoutes)
 app.use(notFound404)
 app.use(errorHandler)
-
 app.listen(
   `${process.env.PORT}`,
   console.log(
@@ -34,4 +33,4 @@ app.listen(
   )
 )
 
-process.on("SIGINT", () => process.exit(1))
+// process.on("SIGINT", () => process.exit(1))

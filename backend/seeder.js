@@ -1,5 +1,7 @@
 import dotenv from "dotenv"
 import chalk from "chalk"
+import loading from "loading-indicator"
+import presets from "loading-indicator/presets.js"
 import users from "./data/users.seeder.js"
 import products from "./data/products.seeder.js"
 import User from "./schema/user.schema.js"
@@ -14,6 +16,9 @@ connectDB()
 
 const importData = async () => {
   try {
+    const timer = loading.start(chalk.yellowBright("Loading..."), {
+      frames: presets.circle,
+    })
     await User.deleteMany()
     await Product.deleteMany()
     await Order.deleteMany()
@@ -26,7 +31,7 @@ const importData = async () => {
       return { ...product, user: adminId }
     })
     await Product.insertMany(sampleProducts)
-
+    loading.stop(timer)
     console.log(chalk.green.bold("Data imported successfully..."))
     process.exit()
   } catch (error) {
@@ -37,11 +42,14 @@ const importData = async () => {
 
 const destroyData = async () => {
   try {
+    const timer = loading.start(chalk.yellowBright("Loading..."), {
+      frames: presets.circle,
+    })
     await User.deleteMany()
     await Product.deleteMany()
     await Order.deleteMany()
     await Message.deleteMany()
-
+    loading.stop(timer)
     console.log(chalk.green.bold("Data destroyed successfully..."))
     process.exit()
   } catch (error) {

@@ -41,9 +41,18 @@ const Products = ({ history, location, match }) => {
   }
 
   if (loadingProducts || loadingCategories) return <Loader />
-  if (errorProducts) return <Message variant="error">{errorProducts}</Message>
+  if (errorProducts)
+    return (
+      <Message variant="error" margin="2rem auto">
+        {errorProducts}
+      </Message>
+    )
   if (errorCategories)
-    return <Message variant="error">{errorCategories}</Message>
+    return (
+      <Message variant="error" margin="2rem auto">
+        {errorCategories}
+      </Message>
+    )
   return (
     <>
       <ProductsStyle.ButtonActions>
