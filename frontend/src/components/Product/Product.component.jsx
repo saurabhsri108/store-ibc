@@ -53,11 +53,27 @@ const Product = (product) => {
         </Products.Discount>
       </div>
       <Products.Actions>
-        <Button fs="1.2rem" sm={1} onClick={addToSaveHandler}>
+        <Button
+          fs="1.2rem"
+          sm={1}
+          bg="var(--color-white-100)"
+          bgh="hsla(0, 0%, 90%, 0.7)"
+          color="var(--color-black-100)"
+          style={{ border: "1px solid hsla(0, 0%, 0%, 0.2)" }}
+          onClick={addToSaveHandler}
+        >
           Wish
           <FaHeart />
         </Button>
-        <Button fs="1.2rem" sm={1} onClick={addToCartHandler}>
+        <Button
+          fs="1.2rem"
+          sm={1}
+          bg="var(--color-white-100)"
+          bgh="hsla(0, 0%, 90%, 0.7)"
+          color="var(--color-black-100)"
+          style={{ border: "1px solid hsla(0, 0%, 0%, 0.2)" }}
+          onClick={addToCartHandler}
+        >
           <FaCartPlus />
           Cart
         </Button>

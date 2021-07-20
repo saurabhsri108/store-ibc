@@ -26,7 +26,7 @@ const SignInForm = ({ history, location }) => {
     }
   }, [history, redirect, userInfo])
 
-  const googleSuccessHandler = async (res) => {
+  const googleSuccessHandler = (res) => {
     const { googleId, email } = res.profileObj
     dispatch(userLogin(email, googleId))
   }
@@ -44,7 +44,7 @@ const SignInForm = ({ history, location }) => {
     <Component.AuthContainer>
       <Component.AuthForm onSubmit={signInHandler}>
         <h1 style={{ marginTop: 0 }}>Welcome Back!</h1>
-        {loadingUser && <Loader />}
+        {loadingUser && <Loader height="auto" />}
         {error && (
           <Message variant="error" width="100%" margin="0">
             {error}

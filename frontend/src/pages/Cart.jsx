@@ -11,7 +11,7 @@ const Cart = () => {
   return (
     <CartContainer>
       {cartItems?.length !== 0 && <CartItems items={cartItems} />}
-      {cartItems?.length === 0 && <NoCartItem />}
+      {cartItems?.length === 0 && <NoCartItem title="No items in your cart" />}
       {savedCartItems?.length !== 0 && (
         <CartItems items={savedCartItems} isSavedProduct={true} />
       )}

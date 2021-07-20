@@ -12,6 +12,15 @@ import { useEffect } from "react"
 import { getProfile } from "../redux/action-creators/user-action-creator"
 import Message from "../components/Messages/Message.component"
 import Loader from "../components/Loading/Loading.component"
+import CartSection from "../components/UserAccount/CartSection.component"
+import WishlistSection from "../components/UserAccount/WishlistSection.component"
+import {
+  FaHeart,
+  FaLock,
+  FaShoppingCart,
+  FaUserCircle,
+  FaWallet,
+} from "react-icons/fa"
 
 const Account = ({ location, history }) => {
   const pathname = location.pathname
@@ -33,7 +42,7 @@ const Account = ({ location, history }) => {
   if (loadingProfile) return <Loader />
   if (errorProfile)
     return (
-      <Message variant="error" width="100%" margin="0 auto">
+      <Message variant="error" margin="2rem auto">
         {errorProfile}
       </Message>
     )
@@ -58,6 +67,7 @@ const Account = ({ location, history }) => {
                   pathname === "/user/account" ? "active" : ""
                 }`}
               >
+                <FaUserCircle />
                 My Account
               </Link>
             </li>
@@ -68,6 +78,7 @@ const Account = ({ location, history }) => {
                   pathname === "/user/orders" ? "active" : ""
                 }`}
               >
+                <FaWallet />
                 My Orders
               </Link>
             </li>
@@ -78,6 +89,7 @@ const Account = ({ location, history }) => {
                   pathname === "/user/cart" ? "active" : ""
                 }`}
               >
+                <FaShoppingCart />
                 My Cart
               </Link>
             </li>
@@ -88,6 +100,7 @@ const Account = ({ location, history }) => {
                   pathname === "/user/wishlist" ? "active" : ""
                 }`}
               >
+                <FaHeart />
                 My Wishlist
               </Link>
             </li>
@@ -98,6 +111,7 @@ const Account = ({ location, history }) => {
                   pathname === "/user/reset" ? "active" : ""
                 }`}
               >
+                <FaLock />
                 Change Password
               </Link>
             </li>
@@ -112,6 +126,8 @@ const Account = ({ location, history }) => {
         </h1>
         <Switch>
           <Route path="/user/account" component={AccountSection} />
+          <Route path="/user/cart" component={CartSection} />
+          <Route path="/user/wishlist" component={WishlistSection} />
           <Route path="/user/reset" component={ResetPassword} />
         </Switch>
       </Card>

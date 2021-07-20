@@ -5,14 +5,14 @@ import {
   CartParagraph,
 } from "./Cart.styles"
 
-const NoCartItem = () => {
+const NoCartItem = (props) => {
   return (
     <>
       <CartCard>
         <CartMissingImage />
       </CartCard>
       <CartCard className="no-cart-item-card">
-        <CartHeading className="no-cart-heading">No Cart Items</CartHeading>
+        <CartHeading className="no-cart-heading">{props.title}</CartHeading>
         <CartParagraph>Add some products to see the list here</CartParagraph>
       </CartCard>
     </>

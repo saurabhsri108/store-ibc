@@ -55,9 +55,7 @@ export const userRegister =
 
       dispatch({ type: actions.USER_REGISTER_SUCCESS, payload: data })
 
-      dispatch({ type: actions.USER_LOGIN_SUCCESS, payload: data })
-
-      localStorage.setItem("userInfo", JSON.stringify(data))
+      // dispatch({ type: actions.USER_LOGIN_SUCCESS, payload: data })
     } catch (error) {
       dispatch({
         type: actions.USER_REGISTER_FAILURE,
@@ -68,6 +66,24 @@ export const userRegister =
       })
     }
   }
+
+export const userVerify = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: actions.USER_VERIFY_REQUEST })
+
+    const { data } = await axios.post(`/api/v1/users/verify/${id}`)
+
+    dispatch({ type: actions.USER_VERIFY_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: actions.USER_VERIFY_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
 
 export const userLogout = () => (dispatch) => {
   localStorage.removeItem("userInfo")
@@ -94,7 +110,7 @@ export const getProfile = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: actions.USER_DETAILS_FAILURE,
-      error:
+      payload:
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
@@ -121,14 +137,10 @@ export const updateProfile = (id, formData) => async (dispatch, getState) => {
       config
     )
     dispatch({ type: actions.USER_UPDATE_SUCCESS, payload: data })
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify({ ...data, token: userInfo.token })
-    )
   } catch (error) {
     dispatch({
       type: actions.USER_UPDATE_FAILURE,
-      error:
+      payload:
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
@@ -157,7 +169,7 @@ export const resetPassword = (id, password) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: actions.USER_UPDATE_FAILURE,
-      error:
+      payload:
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,

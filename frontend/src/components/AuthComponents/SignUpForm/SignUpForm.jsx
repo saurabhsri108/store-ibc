@@ -14,6 +14,7 @@ const SignUpForm = ({ history, location }) => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [message, setMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("")
 
   const dispatch = useDispatch()
 
@@ -21,12 +22,11 @@ const SignUpForm = ({ history, location }) => {
     (state) => state.userRegister
   )
 
-  const redirect = location.search ? location.search.split("=")[1] : "/"
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      setSuccessMessage(userInfo.message)
     }
-  }, [history, redirect, userInfo])
+  }, [userInfo])
 
   const googleSuccessHandler = async (res) => {
     const { googleId, email, imageUrl, name, givenName, familyName } =
@@ -65,7 +65,7 @@ const SignUpForm = ({ history, location }) => {
       <Component.SignUpImage />
       <Component.AuthForm onSubmit={signUpHandler}>
         <h1 style={{ marginTop: 0 }}>New Member?</h1>
-        {loadingUser && <Loader />}
+        {loadingUser && <Loader height="auto" />}
         {error && (
           <Message variant="error" width="100%" margin="0">
             {error}
@@ -74,6 +74,11 @@ const SignUpForm = ({ history, location }) => {
         {message && (
           <Message variant="error" width="100%" margin="0">
             {message}
+          </Message>
+        )}
+        {successMessage && (
+          <Message variant="success" width="100%" margin="0">
+            {successMessage}
           </Message>
         )}
         <Form.InputGroup>

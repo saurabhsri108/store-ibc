@@ -9,7 +9,7 @@ const spinner = keyframes`
 const Loader = styled.div`
   background-color: #ffffff;
   width: 100%;
-  height: 100vh;
+  height: ${({ height }) => height || "100vh"};
   display: grid;
   place-items: center;
 

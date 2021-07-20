@@ -68,8 +68,10 @@ export const AccountLinks = styled(Card)`
 
     .user-link-item {
       color: var(--color-black-60);
-      font-size: 1.4rem;
-      display: inline-block;
+      font-size: 1.3rem;
+      display: inline-flex;
+      gap: 1rem;
+      align-items: center;
       width: 100%;
       padding: 1rem;
       transition: all 100ms ease-in-out;
@@ -77,6 +79,7 @@ export const AccountLinks = styled(Card)`
       &.active {
         background-color: hsla(0, 0%, 90%, 1);
         color: var(--color-black-70);
+        font-weight: 600;
       }
 
       &:hover,

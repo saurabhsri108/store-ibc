@@ -6,6 +6,7 @@ const router = Router()
 
 router.route("/add").post(methods.addUser)
 router.post("/login", methods.authUser)
+router.post("/verify/:token", methods.verifyNewUser)
 router
   .route("/profile")
   .get(protectUser, methods.getUserProfile)

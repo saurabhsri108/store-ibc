@@ -149,7 +149,6 @@ const MobileOverlay = ({ isOverlayOpen, overlayHandler }) => {
       </ONav>
       <Octa>
         <OctaButton to="/products">Browse Products</OctaButton>
-        <OctaButton to="/subscription">Subscribe to Get Updates</OctaButton>
       </Octa>
     </Overlay>
   )

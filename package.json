@@ -10,7 +10,8 @@
     "start": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
-    "heroku": "node backend/server"
+    "heroku": "node backend/server",
+    "testEmail": "DEBUG=email-templates nodemon backend/emails/emailer.js"
   },
   "repository": "https://github.com/vasudeveloper001/store-ibc.git",
   "author": "Saurabh Srivastava <vasudeveloper001@gmail.com>",
@@ -21,17 +22,20 @@
     "nodemon": "^2.0.9"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.1.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "email-templates": "^8.0.7",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "imagekit": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "loading-indicator": "^2.0.0",
-    "mongoose": "^5.13.2"
+    "mongoose": "^5.13.2",
+    "pug": "^3.0.2"
   },
   "engines": {
     "node": "16.5.0"

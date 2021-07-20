@@ -16,7 +16,7 @@ const App = () => {
       <Header />
       <Switch location={location} key={location.pathname}>
         <Route path="/" exact component={Home} />
-        <Route path="/auth/:option" exact component={Auth} />
+        <Route path="/auth/:option/:token?" exact component={Auth} />
         <Route path="/products/" exact component={Products} />
         <Route path="/products/:id" exact component={SingleProduct} />
         <Route path="/cart" exact component={Cart} />

@@ -23,8 +23,8 @@ export const Category = styled.span`
   position: absolute;
   right: 0;
   top: 0;
-  background: black;
-  color: white;
+  background: var(--color-black-100);
+  color: var(--color-white-100);
   padding: 1rem 0.5rem 1rem 2rem;
   border: none;
   font-size: 1rem;

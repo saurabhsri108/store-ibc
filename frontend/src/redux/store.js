@@ -11,6 +11,7 @@ import {
   userProfileReducer,
   userRegisterReducer,
   userUpdateProfileReducer,
+  userVerifyReducer,
 } from "./reducers/user-reducers"
 import {
   cartItemsReducer,
@@ -23,6 +24,7 @@ const reducer = combineReducers({
   categoriesList: categoriesListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userVerify: userVerifyReducer,
   userProfile: userProfileReducer,
   updatedProfile: userUpdateProfileReducer,
   cartItems: cartItemsReducer,
@@ -41,7 +43,7 @@ const savedCartItemsFromStorage = localStorage.getItem("savedCartItems")
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   userRegister: { userInfo: userInfoFromStorage },
-  userProfile: { userDetails: userInfoFromStorage },
+  userVerify: { isVerified: userInfoFromStorage?.verified },
   cartItems: { cartItems: cartItemsFromStorage },
   savedCartItems: { savedCartItems: savedCartItemsFromStorage },
 }
