@@ -126,16 +126,12 @@ export const updateProfile = (id, formData) => async (dispatch, getState) => {
     } = getState()
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
-    const { data } = await axios.put(
-      `/api/v1/users/${id}`,
-      { ...formData },
-      config
-    )
+    const { data } = await axios.put(`/api/v1/users/${id}`, formData, config)
+    console.log(data)
     dispatch({ type: actions.USER_UPDATE_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
@@ -148,31 +144,44 @@ export const updateProfile = (id, formData) => async (dispatch, getState) => {
   }
 }
 
-export const resetPassword = (id, password) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: actions.USER_UPDATE_REQUEST })
-    const {
-      userLogin: { userInfo },
-    } = getState()
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+export const resetPassword =
+  (id, { oldPassword, newPassword }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({ type: actions.USER_UPDATE_REQUEST })
+      const {
+        userLogin: { userInfo },
+      } = getState()
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      const {
+        data: { hasPassed },
+      } = await axios.post(
+        "/api/v1/users/check",
+        { email: userInfo.email, oldPassword },
+        config
+      )
+
+      if (hasPassed) {
+        const { data } = await axios.put(
+          `/api/v1/users/${id}`,
+          { id: userInfo.id, password: newPassword },
+          config
+        )
+        dispatch({ type: actions.USER_UPDATE_SUCCESS, payload: data })
+      }
+    } catch (error) {
+      dispatch({
+        type: actions.USER_UPDATE_FAILURE,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
     }
-    const { data } = await axios.put(
-      `/api/v1/users/${id}`,
-      { password },
-      config
-    )
-    dispatch({ type: actions.USER_UPDATE_SUCCESS, payload: data })
-  } catch (error) {
-    dispatch({
-      type: actions.USER_UPDATE_FAILURE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
   }
-}

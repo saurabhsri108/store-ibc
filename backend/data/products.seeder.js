@@ -1,14 +1,8 @@
 import axios from "axios"
-import ImageKit from "imagekit"
+import imagekit from "../utils/imagekitUploader.js"
 import dotenv from "dotenv"
 
 dotenv.config()
-
-const imagekit = new ImageKit({
-  publicKey: process.env.IMAGE_KIT_PUBLIC_KEY,
-  privateKey: process.env.IMAGE_KIT_SECRET_KEY,
-  urlEndpoint: process.env.IMAGE_KIT_URL_ENDPOINT,
-})
 
 const getImageUrl = async (product) => {
   const newImages = []
@@ -24,7 +18,7 @@ const getImageUrl = async (product) => {
     //   file: imageUrl, // product has image url here.
     //   fileName: product.title,
     //   useUniqueFileName: true,
-    //   folder: "/storejs/", // this is the folder I created in the media library on my dashboard
+    //   folder: "/storejs-project/", // this is the folder I created in the media library on my dashboard
     // })
     newImages.push({ image: imageUrl, alt: product.title })
   }

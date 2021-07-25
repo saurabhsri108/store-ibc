@@ -9,6 +9,7 @@ import Product from "./schema/product.schema.js"
 import Message from "./schema/message.schema.js"
 import Order from "./schema/order.schema.js"
 import connectDB from "./config/db.config.js"
+import imagekit from "./utils/imagekitUploader.js"
 
 dotenv.config()
 

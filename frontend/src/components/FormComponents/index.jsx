@@ -7,6 +7,7 @@ import ButtonLink from "./ButtonLink.component"
 import Form from "./Form.component"
 import InputCheckbox from "./InputCheckbox.component"
 import InputRadio from "./InputRadio.component"
+import FileInputField from "./FileInputField.component"
 
 export {
   InputField,
@@ -18,4 +19,5 @@ export {
   Form,
   InputCheckbox,
   InputRadio,
+  FileInputField,
 }

@@ -3,6 +3,7 @@ import User from "../schema/user.schema.js"
 import { emailMessage, sendEmail } from "../utils/emailer.js"
 import generateToken from "../utils/generatejwt.js"
 import jwt from "jsonwebtoken"
+import imagekit from "../utils/imagekitUploader.js"
 
 /**
  * @desc    Add new user - Signup
@@ -88,6 +89,11 @@ export const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email: email })
 
+  if (!user) {
+    res.status(401)
+    throw new Error("You haven't signed up yet. Please sign up first!")
+  }
+
   if (user.verified !== true) {
     res.status(401)
     throw new Error("You haven't verified your email")
@@ -144,13 +150,41 @@ export const getUserProfile = asyncHandler(async (req, res) => {
  */
 export const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ _id: req.body.id })
+  let fileUrl = false
+  let fileUrlId = false
+
+  if (
+    user.email === "admin001@storejs.com" ||
+    user.email === "user001@storejs.com"
+  ) {
+    res.status(401)
+    throw new Error("Cannot change dummy user profile data")
+  }
+
+  if (req.files) {
+    if (user.fileId) await imagekit.deleteFile(user.fileId)
+    const { fileId, url, thumbnailUrl } = await imagekit.upload({
+      file: req.files.imageUrl.data, // product has image url here.
+      fileName: req.files.imageUrl.name,
+      useUniqueFileName: true,
+      folder: "/storejs-project/users/", // this is the folder I created in the media library on my dashboard
+    })
+    if (typeof url !== "string" && !url) {
+      res.status(401)
+      throw new Error("Profile pic failed to upload")
+    }
+    fileUrl = url
+    fileUrlId = fileId
+  }
+
   if (user) {
     user.username = req.body.username || user.username
     user.name = req.body.name || user.name
     user.givenName = req.body.name?.split(" ")[0] || user.givenName
     user.familyName = req.body.name?.split(" ")[1] || user.familyName
     user.email = req.body.email || user.email
-    user.image = req.body.image || user.image
+    user.imageUrl = fileUrl || user.imageUrl
+    user.fileId = fileUrlId || user.imageId
     user.password = req.body.password || user.password
 
     const updatedUser = await user.save()
@@ -169,6 +203,32 @@ export const updateUser = asyncHandler(async (req, res) => {
   } else {
     res.status(404)
     throw new Error("User not found")
+  }
+})
+
+/**
+ * @desc    Check if old password is correct or not
+ * @route   POST /api/v1/users/check
+ * @access  Private
+ */
+export const checkOldPassword = asyncHandler(async (req, res) => {
+  const { email, oldPassword } = req.body
+  const user = await User.findOne({ email: email })
+
+  if (!user) {
+    res.status(401)
+    throw new Error("You're not the owner of this account")
+  }
+  if (user) {
+    const data = await user.matchPassword(oldPassword)
+    if (data)
+      res.status(200).json({
+        hasPassed: data,
+      })
+    else {
+      res.status(401)
+      throw new Error("Old password doesn't match")
+    }
   }
 })
 

@@ -20,6 +20,9 @@ const userSchema = mongoose.Schema(
     imageUrl: {
       type: String,
     },
+    fileId: {
+      type: String,
+    },
     name: {
       type: String,
     },
