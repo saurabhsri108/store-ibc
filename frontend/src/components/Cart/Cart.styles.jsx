@@ -1,15 +1,14 @@
-import styled from "styled-components"
-import Card from "../Card/Card.component"
-import Container from "../Container/Container.component"
-import { Button } from "../FormComponents"
-import EmptySVG from "./images/empty_cart.svg"
+import styled from "styled-components";
+import Card from "../Card/Card.component";
+import Container from "../Container/Container.component";
+import { Button } from "../FormComponents";
 
 export const CartContainer = styled(Container)`
   margin: 0 auto;
   @media screen and (min-width: 45rem) {
     grid-template-columns: 2fr 1fr;
   }
-`
+`;
 export const CartCard = styled(Card)`
   &.no-cart-item-card {
     place-content: center;
@@ -34,7 +33,7 @@ export const CartCard = styled(Card)`
       }
     }
   }
-`
+`;
 
 export const CartHeading = styled.h2`
   font-size: var(--fs-product-title);
@@ -44,7 +43,7 @@ export const CartHeading = styled.h2`
   &.no-cart-heading {
     margin: 2rem 0 1rem 0;
   }
-`
+`;
 
 export const CartItemTitle = styled.h3`
   font-size: 1.4rem;
@@ -58,27 +57,27 @@ export const CartItemTitle = styled.h3`
   &.no-cart-heading {
     margin: 2rem 0 1rem 0;
   }
-`
+`;
 
 export const CartItemPrice = styled.p`
   font-size: 2.4rem;
   margin: 1rem 0;
   font-weight: 600;
   color: var(--color-black-70);
-`
+`;
 export const CartDeliveryTime = styled.p`
   color: var(--color-black-70);
   font-weight: 600;
-`
+`;
 export const CartItemDiscount = styled.span`
   text-decoration: line-through;
-`
+`;
 
 export const CartParagraph = styled.p`
   color: var(--color-black-70);
   font-weight: 400;
   line-height: 1.5;
-`
+`;
 
 export const CartColOne = styled.div`
   flex: 3;
@@ -96,13 +95,13 @@ export const CartColOne = styled.div`
       color: var(--color-black-70);
     }
   }
-`
+`;
 export const CartColTwo = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`;
 
 export const CartFinalRow = styled.div`
   display: flex;
@@ -119,7 +118,7 @@ export const CartFinalRow = styled.div`
     padding-bottom: 0;
     border-bottom: none;
   }
-`
+`;
 
 export const CartFinalItem = styled.p`
   color: var(--color-black-70);
@@ -131,13 +130,13 @@ export const CartFinalItem = styled.p`
   @media screen and (min-width: 45rem) {
     font-size: 1.4rem;
   }
-`
+`;
 
 export const CartProductImage = styled.img`
   width: 100%;
   max-width: 8rem;
   height: auto;
-`
+`;
 export const CartItemQty = styled.select`
   padding: 0.4rem;
   font-size: 1.4rem;
@@ -147,7 +146,7 @@ export const CartItemQty = styled.select`
   cursor: pointer;
   margin-top: 0.4rem;
   max-width: 8rem;
-`
+`;
 
 export const CartItemAction = styled.div`
   display: grid;
@@ -168,7 +167,7 @@ export const CartItemAction = styled.div`
     gap: 1rem;
     margin-top: 2rem;
   }
-`
+`;
 
 export const CartItemButton = styled(Button)`
   text-transform: uppercase;
@@ -186,14 +185,14 @@ export const CartItemButton = styled(Button)`
   @media screen and (min-width: 45rem) {
     padding: 1.8rem 1rem;
   }
-`
+`;
 
 export const CartMissingImage = styled.img`
   width: 50%;
   height: auto;
-`
+`;
 
 CartMissingImage.defaultProps = {
-  src: EmptySVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/empty-cart_oNo00pnjb.svg?updatedAt=1627398198770",
   alt: "No Cart Items",
-}
+};

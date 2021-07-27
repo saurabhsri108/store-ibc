@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import Container from "../Container/Container.component"
-import { Form } from "../FormComponents"
-import SignInSVG from "./SignInForm/images/login.svg"
-import SignUpSVG from "./SignUpForm/images/signup.svg"
-import ForgotSVG from "./ForgotPassword/images/forgot-password.svg"
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Container from "../Container/Container.component";
+import { Form } from "../FormComponents";
 
-export const AuthForm = styled(Form)``
+export const AuthForm = styled(Form)``;
 
 export const AuthContainer = styled(Container)`
   gap: 4rem;
@@ -19,7 +16,7 @@ export const AuthContainer = styled(Container)`
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
-`
+`;
 
 export const AuthLinks = styled(Link)`
   display: block;
@@ -31,7 +28,7 @@ export const AuthLinks = styled(Link)`
   &:active {
     text-decoration: underline;
   }
-`
+`;
 
 export const SignInImage = styled.img`
   display: none;
@@ -41,7 +38,7 @@ export const SignInImage = styled.img`
     width: 100%;
     justify-self: right;
   }
-`
+`;
 
 export const SignUpImage = styled.img`
   display: none;
@@ -51,7 +48,7 @@ export const SignUpImage = styled.img`
     width: 100%;
     justify-self: right;
   }
-`
+`;
 
 export const ForgotImage = styled.img`
   display: none;
@@ -61,19 +58,19 @@ export const ForgotImage = styled.img`
     width: 100%;
     justify-self: right;
   }
-`
+`;
 
 SignInImage.defaultProps = {
-  src: SignInSVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/login-section_2jRVw4_bb.svg?updatedAt=1627398196615",
   alt: "Login Page",
-}
+};
 
 SignUpImage.defaultProps = {
-  src: SignUpSVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/sign-up_YQ2ycp0IR.svg?updatedAt=1627398197108",
   alt: "Register Page",
-}
+};
 
 ForgotImage.defaultProps = {
-  src: ForgotSVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/forgot-password_-hImxQwoL.svg?updatedAt=1627398199557",
   alt: "Forgot Password",
-}
+};

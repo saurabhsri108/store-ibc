@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Container from "../Container/Container.component";
-import AboutSVG from "./images/about.svg";
 
 export const SectionAbout = styled.section`
   background: var(--color-black-100);
@@ -73,6 +72,6 @@ export const AboutImage = styled.img`
 `;
 
 AboutImage.defaultProps = {
-  src: AboutSVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/about-section_QPySadRsa.svg?updatedAt=1627398197985",
   alt: "Features Listings",
 };

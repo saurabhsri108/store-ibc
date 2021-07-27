@@ -1,7 +1,6 @@
-import styled from "styled-components"
-import Error from "./images/404.svg"
-import Container from "../Container/Container.component"
-import { ButtonLink } from "../FormComponents"
+import styled from "styled-components";
+import Container from "../Container/Container.component";
+import { ButtonLink } from "../FormComponents";
 
 export const ErrorContainer = styled(Container)`
   gap: 4rem;
@@ -13,7 +12,7 @@ export const ErrorContainer = styled(Container)`
   @media screen and (min-width: 60rem) {
     grid-template-columns: auto auto;
   }
-`
+`;
 
 export const ErrorSection = styled.section`
   display: grid;
@@ -24,7 +23,7 @@ export const ErrorSection = styled.section`
     width: 400px;
     justify-self: left;
   }
-`
+`;
 
 export const ErrorHeading = styled.h1`
   text-align: left;
@@ -46,7 +45,7 @@ export const ErrorHeading = styled.h1`
     background: var(--color-black-100);
     margin-top: 1rem;
   }
-`
+`;
 
 export const ErrorPara = styled.p`
   text-align: left;
@@ -56,11 +55,11 @@ export const ErrorPara = styled.p`
   letter-spacing: 0.1rem;
   line-height: 1.5;
   margin-top: -1.2rem;
-`
+`;
 
 export const ErrorButton = styled(ButtonLink)`
   margin-top: 0.325rem;
-`
+`;
 
 export const ErrorImage = styled.img`
   width: 100%;
@@ -72,9 +71,9 @@ export const ErrorImage = styled.img`
     width: 540px;
     justify-self: right;
   }
-`
+`;
 
 ErrorImage.defaultProps = {
-  src: Error,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/404_i-ONPvqYW.svg?updatedAt=1627398411873",
   alt: "404 Error",
-}
+};

@@ -17,7 +17,6 @@ const SignInForm = ({ history, location }) => {
   const { loadingUser, userInfo, error } = useSelector(
     (state) => state.userLogin
   )
-
   const redirect = location.search ? location.search.split("=")[1] : "/"
 
   useEffect(() => {

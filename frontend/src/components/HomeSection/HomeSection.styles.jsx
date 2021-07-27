@@ -1,11 +1,10 @@
-import styled from "styled-components"
-import HomeSVG from "./images/m_home.svg"
-import Container from "../Container/Container.component"
-import { ButtonLink } from "../FormComponents"
+import styled from "styled-components";
+import Container from "../Container/Container.component";
+import { ButtonLink } from "../FormComponents";
 
 export const SectionHome = styled.section`
   background-color: var(--color-white-100);
-`
+`;
 
 export const HomeContainer = styled(Container)`
   gap: 4rem;
@@ -17,7 +16,7 @@ export const HomeContainer = styled(Container)`
   @media screen and (min-width: 60rem) {
     grid-template-columns: auto auto;
   }
-`
+`;
 
 export const InnerSection = styled.section`
   display: grid;
@@ -28,7 +27,7 @@ export const InnerSection = styled.section`
     width: 400px;
     justify-self: left;
   }
-`
+`;
 
 export const HomeImage = styled.img`
   width: 100%;
@@ -40,7 +39,7 @@ export const HomeImage = styled.img`
     width: 540px;
     justify-self: right;
   }
-`
+`;
 
 export const CtaHeading = styled.h1`
   text-align: left;
@@ -62,7 +61,7 @@ export const CtaHeading = styled.h1`
     background: var(--color-black-100);
     margin-top: 1rem;
   }
-`
+`;
 
 export const CtaPara = styled.p`
   text-align: left;
@@ -72,13 +71,13 @@ export const CtaPara = styled.p`
   letter-spacing: 0.1rem;
   line-height: 1.5;
   margin-top: -1.2rem;
-`
+`;
 
 export const CtaButton = styled(ButtonLink)`
   margin-top: 0.325rem;
-`
+`;
 
 HomeImage.defaultProps = {
-  src: HomeSVG,
+  src: "https://ik.imagekit.io/saudev001/storejs-project/site-images/home-section_GB4nmLfe1.svg?updatedAt=1627398200408",
   alt: "Shopping Store Home",
-}
+};
