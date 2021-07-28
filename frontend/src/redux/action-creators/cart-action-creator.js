@@ -81,7 +81,6 @@ export const saveShippingAddress = (formData) => async (dispatch) => {
 
 export const savePaymentMethod = (formData) => async (dispatch) => {
   try {
-    console.log(formData);
     dispatch({ type: actions.SAVE_PAYMENT_METHOD, payload: formData });
     localStorage.setItem("payment-method", JSON.stringify(formData));
   } catch (error) {

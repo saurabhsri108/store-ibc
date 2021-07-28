@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema(
   {
@@ -23,53 +23,32 @@ const orderSchema = mongoose.Schema(
     ],
     shippingAddress: {
       address: { type: String, required: true },
+      street: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
-      postal_code: { type: Number, required: true },
+      pincode: { type: String, required: true },
+      country: { type: String, required: true },
     },
-    paymentMethod: {
-      type: String,
-      required: true,
-    },
+    paymentMethod: { type: String, required: true },
     paymentResult: {
       id: { type: Number },
       status: { type: String },
       update_time: { type: String },
       email_address: { type: String },
     },
-    taxPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    totalPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    shippingPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    isPaid: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+    itemsPrice: { type: Number, required: true, default: 0.0 },
+    shippingPrice: { type: Number, required: true, default: 0.0 },
+    totalPrice: { type: Number, required: true, default: 0.0 },
+    isPaid: { type: Boolean, required: true, default: false },
     paidAt: { type: Date },
-    isDelivered: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+    isDelivered: { type: Boolean, required: true, default: false },
     deliverAt: { type: Date },
   },
   {
     timestamps: true,
   }
-)
+);
 
-const Order = mongoose.model("Order", orderSchema)
+const Order = mongoose.model("Order", orderSchema);
 
-export default Order
+export default Order;

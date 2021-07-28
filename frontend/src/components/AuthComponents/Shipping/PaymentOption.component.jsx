@@ -19,7 +19,6 @@ const PaymentOption = ({ history, location }) => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(currentPaymentMethod);
     dispatch(savePaymentMethod(currentPaymentMethod));
     history.push("order-summary");
   };
