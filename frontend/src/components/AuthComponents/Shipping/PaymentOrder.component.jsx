@@ -120,7 +120,7 @@ const PaymentOrder = ({ history, location, match }) => {
                       <tr key={item._id}>
                         <td>
                           <Link
-                            to={`/products/${item._id}`}
+                            to={`/products/${item.product}`}
                             style={{ color: "var(--color-black-60)" }}
                           >
                             <img src={item.image} alt={item.name} width="28" />

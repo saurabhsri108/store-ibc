@@ -21,6 +21,7 @@ import Steps from "./Steps.component";
 import { placeOrder } from "../../../redux/action-creators/order-action-creator";
 import Message from "../../Messages/Message.component";
 import { useEffect } from "react";
+import OrderListings from "../../OrderListings/OrderListings.component";
 
 const OrderSummary = ({ history, location }) => {
   const { cartItems, shippingAddress, paymentMethod } = useSelector(
@@ -90,48 +91,7 @@ const OrderSummary = ({ history, location }) => {
           </div>
           <div className="main-items">
             <h2>Order Items</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.length !== 0 &&
-                  items.map((item) => {
-                    return (
-                      <tr key={item.id}>
-                        <td>
-                          <Link
-                            to={`/products/${item.id}`}
-                            style={{ color: "var(--color-black-60)" }}
-                          >
-                            <img
-                              src={item.image.image}
-                              alt={item.image.alt}
-                              width="28"
-                            />
-                          </Link>
-                        </td>
-                        <td>
-                          <Link
-                            to={`/products/${item.id}`}
-                            style={{ color: "var(--color-black-60)" }}
-                          >
-                            {item.title}
-                          </Link>
-                        </td>
-                        <td>
-                          {item.qty} x ${item.price} = $
-                          {(item.qty * item.price).toFixed(2)}
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
+            <OrderListings items={items} />
           </div>
         </PlaceOrderContainer>
 

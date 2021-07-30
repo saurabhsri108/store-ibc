@@ -2,7 +2,7 @@ import * as actions from "../actions/cart-constants";
 import { PAY_ORDER_RESET } from "../actions/order-constants";
 
 export const cartItemsReducer = (
-  state = { cartItems: [], shippingAddress: {} },
+  state = { cartItems: [], shippingAddress: {}, paymentMethod: "paypal" },
   action
 ) => {
   switch (action.type) {
@@ -31,7 +31,7 @@ export const cartItemsReducer = (
       return { ...state, paymentMethod: action.payload };
 
     case PAY_ORDER_RESET:
-      return { cartItems: [], shippingAddress: {} };
+      return { cartItems: [], shippingAddress: {}, paymentMethod: "paypal" };
     default:
       return state;
   }

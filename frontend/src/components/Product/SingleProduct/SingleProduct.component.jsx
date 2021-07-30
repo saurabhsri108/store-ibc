@@ -1,29 +1,31 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { addToCart } from "../../../redux/action-creators/cart-action-creator"
-import Slides from "../../Slides/Slides.component"
-import Rating from "../Ratings/Rating.component"
-import * as SingleProductStyle from "./SingleProduct.styles"
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { addToCart } from "../../../redux/action-creators/cart-action-creator";
+import Slides from "../../Slides/Slides.component";
+import Rating from "../Ratings/Rating.component";
+import * as SingleProductStyle from "./SingleProduct.styles";
 
 const SingleProduct = ({ product }) => {
-  const [qty, setQty] = useState(1)
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const [qty, setQty] = useState(1);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const qtyChangeHandler = (e) => {
-    e.preventDefault()
-    setQty(e.target.value)
-  }
+    e.preventDefault();
+    setQty(e.target.value);
+  };
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product, qty))
-    history.push(`/cart`)
-  }
+    dispatch(addToCart(product, qty));
+    history.push(`/cart`);
+  };
 
   const buyNowHandler = () => {
-    history.push(`/checkout/${product._id}?qty=${qty}`)
-  }
+    dispatch(addToCart(product, qty));
+    // history.push(`/checkout/${product._id}?qty=${qty}`);
+    history.push("/auth/shipping");
+  };
   return (
     <SingleProductStyle.SContainer>
       {product.images.length !== 0 && <Slides images={product.images} />}
@@ -52,7 +54,7 @@ const SingleProduct = ({ product }) => {
                   <option key={value + 1} value={value + 1}>
                     {value + 1}
                   </option>
-                )
+                );
               })}
             </SingleProductStyle.QuantitySelect>
           </SingleProductStyle.Quantity>
@@ -89,7 +91,7 @@ const SingleProduct = ({ product }) => {
         </SingleProductStyle.SButton>
       </SingleProductStyle.Actions>
     </SingleProductStyle.SContainer>
-  )
-}
+  );
+};
 
-export default SingleProduct
+export default SingleProduct;
