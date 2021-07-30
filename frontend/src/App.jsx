@@ -9,8 +9,24 @@ import SingleProduct from "./pages/SingleProduct.jsx";
 import Cart from "./pages/Cart.jsx";
 import Account from "./pages/Account.jsx";
 import PaymentOrder from "./components/AuthComponents/Shipping/PaymentOrder.component.jsx";
+import { userLogout } from "./redux/action-creators/user-action-creator.js";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const userInfoFromStorage = JSON.parse(localStorage.getItem("userInfo"));
+
+  useEffect(() => {
+    if (userInfoFromStorage) {
+      const userJwtToken = JSON.parse(localStorage.getItem("userInfo")).token;
+      const expDate = JSON.parse(atob(userJwtToken.split(".")[1])).exp;
+      if (expDate * 1000 < Date.now()) {
+        dispatch(userLogout());
+      }
+    }
+  });
+
   const location = useLocation();
   return (
     <>

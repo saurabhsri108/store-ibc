@@ -48,7 +48,7 @@ const PaymentOption = ({ history, location }) => {
             Stripe
           </InputRadio>
         </InputGroup>
-        <InputGroup>
+        {/* <InputGroup>
           <InputRadio
             name="paymentMethod"
             id="razorpay"
@@ -69,7 +69,7 @@ const PaymentOption = ({ history, location }) => {
           >
             GooglePay
           </InputRadio>
-        </InputGroup>
+        </InputGroup> */}
         <LinkContainer>
           <ButtonLink to="shipping">Go Back</ButtonLink>
           <Button type="submit">Continue</Button>

@@ -69,7 +69,41 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
+export const payOrderPaypal =
+  (id, paymentResult) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PAY_ORDER_REQUEST });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/v1/orders/${id}/paypal`,
+        paymentResult,
+        config
+      );
+
+      dispatch({ type: PAY_ORDER_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: PAY_ORDER_FAILED,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+export const payOrderStripe = (order, token) => async (dispatch, getState) => {
   try {
     dispatch({ type: PAY_ORDER_REQUEST });
 
@@ -85,8 +119,8 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/orders/${id}/pay`,
-      paymentResult,
+      `/api/v1/orders/${order.id}/stripe`,
+      { token, order },
       config
     );
 

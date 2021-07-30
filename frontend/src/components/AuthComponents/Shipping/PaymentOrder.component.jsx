@@ -7,7 +7,6 @@ import {
   CartFinalRow,
   CartHeading,
   CartItemAction,
-  CartItemButton,
 } from "../../Cart/Cart.styles";
 import {
   PlaceOrderContainer,
@@ -16,18 +15,29 @@ import {
 } from "./Shipping.styles";
 import {
   getOrderDetails,
-  payOrder,
+  payOrderPaypal,
+  payOrderStripe,
 } from "../../../redux/action-creators/order-action-creator";
 import Message from "../../Messages/Message.component";
 import { useEffect } from "react";
+import { PayPalButton } from "react-paypal-button-v2";
+import StripeCheckout from "react-stripe-checkout";
+import { PAY_ORDER_RESET } from "../../../redux/actions/order-constants";
+import { Button } from "../../FormComponents";
 
 const PaymentOrder = ({ history, location, match }) => {
   const { loading, error, order } = useSelector((state) => state.orderDetails);
+  const { loading: loadingPay, success: successPay } = useSelector(
+    (state) => state.orderPaid
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getOrderDetails(match.params.id));
-  }, [match, dispatch]);
+    if (!order || successPay) {
+      dispatch({ type: PAY_ORDER_RESET });
+      dispatch(getOrderDetails(match.params.id));
+    }
+  }, [match, dispatch, order, successPay]);
 
   if (loading) return <Loader />;
   if (error)
@@ -37,20 +47,18 @@ const PaymentOrder = ({ history, location, match }) => {
       </Message>
     );
 
-  const paymentHandler = (orderTotal) => {
-    console.log(orderTotal);
-    const paymentResult = {
-      id: 1,
-      status: "paid",
-      update_time: Date.now(),
-      payer: {
-        email_address: "vasudeveloper001@gmail.com",
-      },
-    };
-
-    dispatch(payOrder(order._id, paymentResult));
+  const stripePaymentHandler = async (token) => {
+    dispatch(
+      payOrderStripe(
+        { id: order._id, amount: order.totalPrice.toFixed(2) },
+        token
+      )
+    );
   };
 
+  const paypalPaymentHandler = (paymentResult) => {
+    dispatch(payOrderPaypal(order._id, paymentResult));
+  };
   return (
     <ShippingContainer>
       <PlaceOrderMain>
@@ -120,7 +128,7 @@ const PaymentOrder = ({ history, location, match }) => {
                         </td>
                         <td>
                           <Link
-                            to={`/products/${item._id}`}
+                            to={`/products/${item.product}`}
                             style={{ color: "var(--color-black-60)" }}
                           >
                             {item.name}
@@ -157,14 +165,45 @@ const PaymentOrder = ({ history, location, match }) => {
             </CartFinalRow>
           </CartCard>
           <CartItemAction className="cart-checkout">
-            <CartItemButton
-              fs="1.2rem"
-              sm={1}
-              onClick={() => paymentHandler(order.totalPrice)}
-              id="place-order-btn"
-            >
-              Pay Using {order.paymentMethod}
-            </CartItemButton>
+            {order.paymentMethod.toLowerCase() === "paypal" && !order.isPaid && (
+              <>
+                <PayPalButton
+                  amount={order.totalPrice}
+                  onSuccess={paypalPaymentHandler}
+                  options={{
+                    clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID_US,
+                    currency: "USD",
+                  }}
+                />
+                {loadingPay && <Loader height="auto" />}
+              </>
+            )}
+            {order.paymentMethod.toLowerCase() === "stripe" && !order.isPaid && (
+              <>
+                <StripeCheckout
+                  token={stripePaymentHandler}
+                  stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY_TEST}
+                  name="Pay Using Stripe"
+                  amount={order.totalPrice * 100}
+                >
+                  <Button style={{ width: "100%" }}>Pay using stripe</Button>
+                </StripeCheckout>
+                {loadingPay && <Loader height="auto" />}
+              </>
+            )}
+            {order.paymentMethod.toLowerCase() === "razorpay" && !order.isPaid && (
+              <>
+                <div className="stripe-payment">RazorPay Payment</div>
+                {loadingPay && <Loader height="auto" />}
+              </>
+            )}
+            {order.paymentMethod.toLowerCase() === "googlepay" &&
+              !order.isPaid && (
+                <>
+                  <div className="stripe-payment">GooglePay Payment</div>
+                  {loadingPay && <Loader height="auto" />}
+                </>
+              )}
           </CartItemAction>
         </PlaceOrderContainer>
       </PlaceOrderMain>

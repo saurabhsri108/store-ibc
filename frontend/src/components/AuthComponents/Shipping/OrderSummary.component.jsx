@@ -47,6 +47,8 @@ const OrderSummary = ({ history, location }) => {
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     const placeOrderBtn = document.querySelector("#place-order-btn");
+    placeOrderBtn.style.backgroundColor = "var(--color-black-60)";
+    placeOrderBtn.style.borderColor = "var(--color-black-60)";
     placeOrderBtn.disabled = true;
     const modifiedItems = items.map((item) => {
       return {
@@ -142,7 +144,7 @@ const OrderSummary = ({ history, location }) => {
             </CartFinalRow>
             <CartFinalRow>
               <CartFinalItem>Delivery Charges</CartFinalItem>
-              <CartFinalItem>{deliveryPrice}</CartFinalItem>
+              <CartFinalItem>${deliveryPrice}</CartFinalItem>
             </CartFinalRow>
             <CartFinalRow>
               <CartFinalItem>Final Price</CartFinalItem>
@@ -158,13 +160,13 @@ const OrderSummary = ({ history, location }) => {
             >
               Place Order
             </CartItemButton>
+            {loading && <Loader height="auto" />}
+            {error && (
+              <Message variant="error" width="100%" margin="0">
+                {error}
+              </Message>
+            )}
           </CartItemAction>
-          {loading && <Loader />}
-          {error && (
-            <Message variant="error" width="100%" margin="0">
-              {error}
-            </Message>
-          )}
         </PlaceOrderContainer>
       </PlaceOrderMain>
       <LinkContainer>

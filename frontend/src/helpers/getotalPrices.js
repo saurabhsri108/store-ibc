@@ -1,9 +1,9 @@
 export const gettotalPrices = (totalPrice) => {
-  let deliveryPrice = totalPrice > 40 ? "FREE" : 10
+  let deliveryPrice = totalPrice > 40 ? "FREE" : 10;
   const finalPrice =
-    typeof deliveryPrice === "number" ? totalPrice + deliveryPrice : totalPrice
+    typeof deliveryPrice === "number" ? totalPrice + deliveryPrice : totalPrice;
   deliveryPrice =
-    typeof deliveryPrice === "number" ? `$${deliveryPrice}` : "FREE"
+    typeof deliveryPrice === "number" ? `${deliveryPrice}` : "FREE";
 
-  return [deliveryPrice, finalPrice]
-}
+  return [deliveryPrice, finalPrice.toFixed(2)];
+};

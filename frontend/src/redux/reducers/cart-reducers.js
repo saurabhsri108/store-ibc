@@ -1,4 +1,5 @@
 import * as actions from "../actions/cart-constants";
+import { PAY_ORDER_RESET } from "../actions/order-constants";
 
 export const cartItemsReducer = (
   state = { cartItems: [], shippingAddress: {} },
@@ -28,6 +29,9 @@ export const cartItemsReducer = (
 
     case actions.SAVE_PAYMENT_METHOD:
       return { ...state, paymentMethod: action.payload };
+
+    case PAY_ORDER_RESET:
+      return { cartItems: [], shippingAddress: {} };
     default:
       return state;
   }

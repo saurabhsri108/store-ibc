@@ -1,5 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Order from "../schema/order.schema.js";
+import Stripe from "stripe";
+import { v4 as uuid } from "uuid";
 
 /**
  * @desc    Create a new order
@@ -16,7 +18,6 @@ export const createOrder = asyncHandler(async (req, res) => {
     shippingPrice,
     totalPrice,
   } = req.body;
-
   if (orderItems && orderItems.length === 0) {
     res.status(400);
     throw new Error("No order items exists");
@@ -55,11 +56,11 @@ export const getOrderDetails = asyncHandler(async (req, res) => {
 
 /**
  * @desc    Update order details
- * @route   PUT /api/v1/orders/:id/pay
+ * @route   PUT /api/v1/orders/:id/paypal
  * @access  Private
  */
 
-export const updateOrderDetails = asyncHandler(async (req, res) => {
+export const updateOrderDetailsPaypal = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {
     order.isPaid = true;
@@ -75,5 +76,63 @@ export const updateOrderDetails = asyncHandler(async (req, res) => {
   } else {
     res.status(400);
     throw new Error("Order not found");
+  }
+});
+
+/**
+ * @desc    Update order details
+ * @route   PUT /api/v1/orders/:id/stripe
+ * @access  Private
+ */
+/** stripe payment */
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST);
+
+export const updateOrderDetailsStripe = asyncHandler(async (req, res) => {
+  const { order, token } = req.body;
+  const idempotencyKey = uuid(); // stops multiple payments
+
+  try {
+    const customer = await stripe.customers.create({
+      email: token.email,
+      source: token.id,
+    });
+
+    const charge = await stripe.charges.create(
+      {
+        amount: order.amount * 100,
+        currency: "inr",
+        customer: customer.id,
+        receipt_email: token.email,
+        description: `One-time purchase fee for ${order.id}`,
+        shipping: {
+          name: token.card.name,
+          address: {
+            country: token.card.address_country,
+          },
+        },
+      },
+      { idempotencyKey }
+    );
+    if (charge.status === "succeeded") {
+      const order = await Order.findById(req.params.id);
+      if (order) {
+        order.isPaid = true;
+        order.paidAt = Date.now();
+        order.paymentResult = {
+          id: charge.id,
+          status: charge.status,
+          update_time: charge.created,
+          email_address: charge.receipt_email,
+        };
+        const updatedOrder = await order.save();
+        res.status(200).json(updatedOrder);
+      } else {
+        res.status(400);
+        throw new Error("Order not found");
+      }
+    }
+  } catch (err) {
+    res.status(400);
+    throw new Error("Order Payment Failed");
   }
 });

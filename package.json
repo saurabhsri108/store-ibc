@@ -36,7 +36,9 @@
     "jsonwebtoken": "^8.5.1",
     "loading-indicator": "^2.0.0",
     "mongoose": "^5.13.2",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "stripe": "^8.167.0",
+    "uuid": "^8.3.2"
   },
   "engines": {
     "node": "16.5.0"

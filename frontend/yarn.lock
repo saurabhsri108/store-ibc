@@ -9418,6 +9418,14 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-paypal-button-v2@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/react-paypal-button-v2/-/react-paypal-button-v2-2.6.3.tgz#9f037317d9f836b34b9cdbf1830d46d85392a47a"
+  integrity sha512-Kt0QxWjZn+RnIbbFPHDfH8iHwMqe/jG5+SkKElEJ0Fg+CM9yeK37y8zQW97l5C9P9D1yPacW5YNAnuxmI9uS9w==
+  dependencies:
+    prop-types "^15.7.2"
+    rimraf "^3.0.0"
+
 react-redux@^7.2.4:
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.4.tgz#1ebb474032b72d806de2e0519cd07761e222e225"
@@ -9556,6 +9564,11 @@ react-smooth@^2.0.0:
     fast-equals "^2.0.0"
     raf "^3.4.0"
     react-transition-group "2.9.0"
+
+react-stripe-checkout@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/react-stripe-checkout/-/react-stripe-checkout-2.6.3.tgz#3173a870b04e5a3c321a06d24cd53c6030111c45"
+  integrity sha1-MXOocLBOWjwyGgbSTNU8YDARHEU=
 
 react-transition-group@2.9.0:
   version "2.9.0"
