@@ -55,7 +55,7 @@ const PaymentOrder = ({ history, location, match }) => {
       )
     );
   };
-
+  console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY_TEST);
   const paypalPaymentHandler = (paymentResult) => {
     dispatch(payOrderPaypal(order._id, paymentResult));
   };
