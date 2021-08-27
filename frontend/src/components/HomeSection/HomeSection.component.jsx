@@ -6,26 +6,29 @@ import {
   CtaPara,
   CtaButton,
   HomeImage,
-} from "./HomeSection.styles"
+  LandingPageContainers,
+  LandingContainer,
+  LandingHeadings,
+} from "./HomeSection.styles";
 
 const HomeSection = () => {
   return (
-    <SectionHome id="home">
-      <HomeContainer>
+    <LandingPageContainers id="home">
+      <LandingContainer>
         <HomeImage />
         <InnerSection>
-          <CtaHeading>
+          <LandingHeadings>
             We don’t sell products, we deliver <span>aspirations</span>.
-          </CtaHeading>
+          </LandingHeadings>
           <CtaPara>
             Get your most desired aspiration delivered to your home. Fast,
             Secure, and 100% satisfaction.
           </CtaPara>
           <CtaButton to="/products">Browse Products</CtaButton>
         </InnerSection>
-      </HomeContainer>
-    </SectionHome>
-  )
-}
+      </LandingContainer>
+    </LandingPageContainers>
+  );
+};
 
-export default HomeSection
+export default HomeSection;

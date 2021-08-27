@@ -1,40 +1,45 @@
-import { useState } from "react"
-import axios from "axios"
-import * as Component from "./ContactSection.styles"
-import Message from "../Messages/Message.component"
-import { API_URL } from "../../currentEnv"
-import * as FormElement from "../FormComponents"
+import { useState } from "react";
+import axios from "axios";
+import * as Component from "./ContactSection.styles";
+import Message from "../Messages/Message.component";
+import { API_URL } from "../../currentEnv";
+import * as FormElement from "../FormComponents";
+import {
+  LandingContainer,
+  LandingHeadings,
+  LandingPageContainers,
+} from "../HomeSection/HomeSection.styles";
 
 const ContactSection = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [successMessage, setSuccessMessage] = useState(null)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const submitContactHandler = async (e) => {
-    e.preventDefault()
-    const payload = { name, email, message }
+    e.preventDefault();
+    const payload = { name, email, message };
     try {
       const { status, data } = await axios.post(
         `${API_URL}/api/v1/messages`,
         payload
-      )
-      if (status === 200) setSuccessMessage(data.message)
+      );
+      if (status === 200) setSuccessMessage(data.message);
     } catch (error) {
-      console.error(error.message)
-      setErrorMessage(error.message)
+      console.error(error.message);
+      setErrorMessage(error.message);
     }
-    setName("")
-    setEmail("")
-    setMessage("")
-  }
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   return (
-    <Component.SectionContact id="contact">
-      <Component.ContactContainer>
+    <LandingPageContainers id="contact">
+      <LandingContainer>
         <Component.ContactDetails>
-          <Component.ContactHeading>Contact Us</Component.ContactHeading>
+          <LandingHeadings as="h2">Contact Us</LandingHeadings>
           <Component.ContactForm onSubmit={submitContactHandler}>
             <FormElement.InputGroup>
               <FormElement.Label>Name</FormElement.Label>
@@ -113,9 +118,9 @@ const ContactSection = () => {
             </Component.ExternalLink>
           </Component.DetailsInfo>
         </Component.DetailsBox>
-      </Component.ContactContainer>
-    </Component.SectionContact>
-  )
-}
+      </LandingContainer>
+    </LandingPageContainers>
+  );
+};
 
-export default ContactSection
+export default ContactSection;

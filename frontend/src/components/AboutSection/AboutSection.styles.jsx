@@ -1,23 +1,6 @@
 import styled from "styled-components";
 import Container from "../Container/Container.component";
 
-export const SectionAbout = styled.section`
-  background: var(--color-black-100);
-  color: var(--color-white-60);
-`;
-
-export const AboutContainer = styled(Container)`
-  gap: 4rem;
-
-  @media screen and (min-width: 45rem) {
-    padding: 8rem 0;
-  }
-
-  @media screen and (min-width: 60rem) {
-    grid-template-columns: auto auto;
-  }
-`;
-
 export const AboutDetails = styled.div`
   display: grid;
   gap: 2rem;
@@ -25,23 +8,6 @@ export const AboutDetails = styled.div`
   @media screen and (min-width: 60rem) {
     width: 400px;
     justify-self: left;
-  }
-`;
-
-export const AboutHeading = styled.h2`
-  text-align: left;
-  font-size: var(--fs-cta-heading);
-  line-height: var(--fs-cta-heading-line-height);
-  color: var(--color-white-70);
-  font-weight: 600;
-
-  &::after {
-    content: "";
-    background-color: var(--color-white-100);
-    width: 2.4rem;
-    height: 0.4rem;
-    display: block;
-    margin-top: 1rem;
   }
 `;
 

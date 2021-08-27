@@ -2,11 +2,22 @@ import styled from "styled-components";
 import Container from "../Container/Container.component";
 import { ButtonLink } from "../FormComponents";
 
-export const SectionHome = styled.section`
-  background-color: var(--color-white-100);
+export const LandingPageContainers = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ bgColor }) => bgColor || "var(--color-white-100)"};
+
+  color: ${({ color }) => color || "inherit"};
+
+  min-height: calc(100vh - 10rem);
+
+  @media screen and (min-width: 45rem) {
+    min-height: calc(100vh - 8rem);
+  }
 `;
 
-export const HomeContainer = styled(Container)`
+export const LandingContainer = styled(Container)`
   gap: 4rem;
 
   @media screen and (min-width: 45rem) {
@@ -41,11 +52,11 @@ export const HomeImage = styled.img`
   }
 `;
 
-export const CtaHeading = styled.h1`
+export const LandingHeadings = styled.h1`
   text-align: left;
   font-size: var(--fs-cta-heading);
   line-height: var(--fs-cta-heading-line-height);
-  color: var(--color-black-70);
+  color: ${({ color }) => color || "var(--color-black-70)"};
   font-weight: 600;
   margin: 0;
 

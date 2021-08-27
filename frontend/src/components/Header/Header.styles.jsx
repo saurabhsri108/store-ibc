@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link as ScrollerLink } from "react-scroll"
+import styled from "styled-components";
+import { Link as ScrollerLink } from "react-scroll";
 
 export const MainHeader = styled.header`
   position: ${({ pathname }) =>
@@ -9,14 +9,22 @@ export const MainHeader = styled.header`
   z-index: ${({ pathname }) =>
     pathname === "/" || pathname === "/products" ? "1" : ""};
   background-color: var(--color-black-100);
-  padding: 1.2rem 0;
-`
+  /* padding: 1.2rem 0; */
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 45rem) {
+    height: 8rem;
+  }
+`;
 
 export const HeaderContainer = styled.section`
   width: 80%;
   margin: auto;
   max-width: 1080px;
-`
+`;
 
 export const FirstHeaderSection = styled.section`
   display: grid;
@@ -33,7 +41,7 @@ export const FirstHeaderSection = styled.section`
       grid-template-columns: auto 1fr auto;
     }
   }
-`
+`;
 
 export const Scroller = styled(ScrollerLink)`
   color: var(--color-white-60);
@@ -41,12 +49,15 @@ export const Scroller = styled(ScrollerLink)`
   font-family: "Raleway", sans-serif;
   transition: all 100ms ease-in-out;
 
-  &.active {
+  &.active,
+  &:hover,
+  &:active,
+  &:focus {
     color: var(--color-white-100);
     border-bottom: 2px solid var(--color-white-100);
     padding-bottom: 1rem;
   }
-`
+`;
 
 export const SearchIcon = styled.div`
   color: var(--color-black-70);
@@ -61,4 +72,4 @@ export const SearchIcon = styled.div`
   @media screen and (min-width: 45rem) {
     padding: 0 1.2rem;
   }
-`
+`;

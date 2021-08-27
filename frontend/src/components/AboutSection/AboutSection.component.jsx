@@ -1,4 +1,9 @@
 import {
+  LandingContainer,
+  LandingHeadings,
+  LandingPageContainers,
+} from "../HomeSection/HomeSection.styles";
+import {
   SectionAbout,
   AboutContainer,
   AboutDetails,
@@ -9,10 +14,16 @@ import {
 
 const AboutSection = () => {
   return (
-    <SectionAbout id="about">
-      <AboutContainer>
+    <LandingPageContainers
+      bgColor="var(--color-black-100)"
+      color="var(--color-white-60)"
+      id="about"
+    >
+      <LandingContainer>
         <AboutDetails>
-          <AboutHeading>Who are We?</AboutHeading>
+          <LandingHeadings as="h2" color="var(--color-white-70)">
+            Who are We?
+          </LandingHeadings>
           <AboutParagraph>
             We have served millions of people who aspire to better their lives.
           </AboutParagraph>
@@ -22,8 +33,8 @@ const AboutSection = () => {
           </AboutParagraph>
         </AboutDetails>
         <AboutImage />
-      </AboutContainer>
-    </SectionAbout>
+      </LandingContainer>
+    </LandingPageContainers>
   );
 };
 
